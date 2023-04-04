@@ -11,11 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('pedidos', function (Blueprint $table) {
-            $table->id('nro_pedido');
-            $table->timestamp('fecha_pedido')->nullable();
-            $table->unsignedBigInteger('id_cliente');
-            $table->foreign('id_cliente')->references('nro_cliente')->on('clientes')->onUpdate('cascade')->onDelete('cascade');
+        Schema::create('estilo', function (Blueprint $table) {
+            $table->id('codigo_estilo');
+            $table->string('nombre');
+            $table->string('nacionalidad');
+            $table->string('descripción');
             $table->timestamps();
         });
     }
@@ -25,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('pedidos');
+        Schema::dropIfExists('estilo');
     }
 };

@@ -16,6 +16,7 @@ return new class extends Migration
             $table->double('monto');
             $table->unsignedBigInteger('id_pedido');
             $table->foreign('id_pedido')->references('nro_pedido')->on('pedidos')->onUpdate('cascade')->onDelete('cascade');
+            $table->foreign('moto')->references('codigo_moto')->on('moto')->onUpdate('cascade')->onDelete('cascade');
             $table->timestamps();
         });
     }
