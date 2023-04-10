@@ -14,8 +14,39 @@ class DetallesSeeder extends Seeder
     public function run(): void
     {
         DB::table('detalles')->insert([
-            'monto' => '10000',
+            'monto' => '100000',
             'id_pedido' => '1',
         ]);
+
+        DB::table('detalles')->insert([
+            'monto' => '500000',
+            'id_pedido' => '3',
+        ]);
+
+        DB::table('detalles')->insert([
+            'monto' => '200000',
+            'id_pedido' => '3',
+        ]);
+
+        DB::table('detalles')->insert([
+            'monto' => '123000',
+            'id_pedido' => '3',
+        ]);
+
+        DB::table('detalles')->insert([
+            'monto' => '1000000',
+            'id_pedido' => '2',
+        ]);
+
+        DB::table('detalles')->insert([
+            'monto' => '20000',
+            'id_pedido' => '4',
+        ]);
+
+        DB::table('detalles')->insert([
+            'monto' => '140000',
+            'id_pedido' => '4',
+        ]);
+
     }
 }
