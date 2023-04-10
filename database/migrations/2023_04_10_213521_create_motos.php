@@ -11,16 +11,20 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('moto', function (Blueprint $table) {
-            $table->id('id_moto');
+        Schema::create('motos', function (Blueprint $table) {
+            $table->id('nro_moto');
+            $table->timestamps();
             $table->string('marca');
             $table->string('modelo');
             $table->integer('anio');
             $table->string('cilindrada');
             $table->string('patente');
-            $table->foreign('estilo')->references('codigo_estilo')->on('estilo')->onUpdate('cascade')->onDelete('cascade');
-            $table->foreign('detalle')->references('nro_detalles')->on('detalles')->onUpdate('cascade')->onDelete('cascade');
-            $table->timestamps();
+            $table->unsignedBigInteger('id_detalle');
+            $table->unsignedBigInteger('id_estilo');
+
+            $table->foreign('id_detalle')->references('nro_detalle')->on('detalles')->onUpdate('cascade')->onDelete('cascade');
+            $table->foreign('id_estilo')->references('nro_estilo')->on('estilos')->onUpdate('cascade')->onDelete('cascade');
+
         });
     }
 
@@ -29,6 +33,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('moto');
+        Schema::dropIfExists('motos');
     }
 };

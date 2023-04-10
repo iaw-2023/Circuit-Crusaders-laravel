@@ -13,10 +13,11 @@ return new class extends Migration
     {
         Schema::create('pedidos', function (Blueprint $table) {
             $table->id('nro_pedido');
-            $table->timestamp('fecha_pedido')->nullable();
+            $table->date('fecha_pedido')->nullable();
+            $table->timestamps();
+
             $table->unsignedBigInteger('id_cliente');
             $table->foreign('id_cliente')->references('nro_cliente')->on('clientes')->onUpdate('cascade')->onDelete('cascade');
-            $table->timestamps();
         });
     }
 
