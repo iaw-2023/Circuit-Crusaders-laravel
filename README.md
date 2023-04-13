@@ -1,4 +1,4 @@
-<p align="center"><img src="https://ibb.co/mcXfJcR" alt="Motomami"></p>
+<p align="center"><img src="https://i.ibb.co/W2Pmn2H/logomotomami.png" alt="logomotomami" border="0"></p>
 
 ## Introducción
 
@@ -7,7 +7,7 @@ La temática del proyecto va a ser un concesionario de motos, en el que el clien
 Un cliente puede realizar un o varios pedidos, estos pedidos tendrán uno o varios detalles, según corresponda a la cantidad de motos que desee comprar. Cada moto puede categorizarse dentro de un estilo, que va a ser visualizado por el cliente a la hora de ejecutar la compra.
 
 ## Requisitos
-<p align="center"><img src="https://ibb.co/3pcYbDX" alt="MotomamiEntidadRelacion"></p>
+<p align="center"><img src="https://i.ibb.co/dPDJvd9/MotoMami.png" alt="MotoMami" border="0"></p>
 
 
 ## Respecto al Proyecto Framework PHP - Laravel
