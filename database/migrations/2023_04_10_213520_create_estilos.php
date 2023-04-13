@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id('nro_estilo');
             $table->timestamps();
             $table->string('nombre');
-            $table->string('descripción');
+            $table->text('descripcion');
         });
     }
 
