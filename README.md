@@ -12,10 +12,10 @@ Un cliente puede realizar un o varios pedidos, estos pedidos tendrán uno o vari
 
 ## Respecto al Proyecto Framework PHP - Laravel
 
-- Las entidades que se podrán actualizar son las de pedidos, cuando el cliente solicita comprar una o varias motos.
+- Las entidades que se podrán crear, actualizar, eliminar y modificar son las motos y sus estilos.
 - Se pueden generar reportes de cada pedido con sus detalles.
 - Se puede obtener el catálogo de motos con su estilo asociado.
-- No se podrá modificar ninguna entidad por API
+- Desde la API, se podran modificar los pedidos.
 
 ## Respecto al Proyecto Javascript - React/Vue
 - La información que puede ver el usuario son las diferentes motos con sus características todo esto categorizado con sus estilos. Además    de los datos de los pedidos que hace el como cliente.
