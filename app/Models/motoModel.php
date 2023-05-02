@@ -8,4 +8,6 @@ use Illuminate\Database\Eloquent\Model;
 class motoModel extends Model
 {
     use HasFactory;
+    protected $table = 'motos'; 
+    protected $primaryKey = 'nro_moto';
 }
