@@ -12,7 +12,9 @@ class motoController extends Controller
      */
     public function index()
     {
-        //
+        $motos = motoModel::all();
+
+        return view('moto.index')->with('motos',$motos);
     }
 
     /**
@@ -20,7 +22,7 @@ class motoController extends Controller
      */
     public function create()
     {
-        //
+        return view('moto.create');
     }
 
     /**
@@ -28,7 +30,7 @@ class motoController extends Controller
      */
     public function store(Request $request)
     {
-        //
+      
     }
 
     /**
