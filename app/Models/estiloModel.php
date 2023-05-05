@@ -8,4 +8,6 @@ use Illuminate\Database\Eloquent\Model;
 class estiloModel extends Model
 {
     use HasFactory;
+    protected $table = 'estilos'; 
+    protected $primaryKey = 'nro_estilo';
 }

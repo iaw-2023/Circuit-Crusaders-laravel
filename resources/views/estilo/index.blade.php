@@ -1,14 +1,13 @@
 @extends('layouts.base')
 
-@section('contenido')
-    <div class="shadow-lg p-3 mb-5 bg-white rounded"><h3>Contenido de INDEX</h3></div>
-    <a href="estilo/create" class="btn btn-primary">CREAR</a>
+@section('title', 'INDEX DE ESTILO-MOTOMAMI PAPA')
 
-
+@section('content')
+    <a href="estilos/create" class="btn btn-primary">CREAR</a>
     <table class="table table-dark table-striped mt-4">
     <thead>
         <tr>
-            <th scope="col">ID</th>
+            <th scope="col">Id</th>
             <th scope="col">Nombre</th>
             <th scope="col">Descripción</th>
         </tr>
@@ -16,20 +15,19 @@
     <tbody> 
         @foreach ($estilos as $estilo)
         <tr>
+            <td>{{$estilo->nro_estilo}}</td>
+            <td>{{$estilo->nombre}}</td>
+            <td>{{$estilo->descripcion}}</td>
             <td>
-                {{$estilo->id}}
-            </td>
-            <td>
-                {{$estilo->descripcion}}
-            </td>
-            <td>
-                <!--<form action="{{ route('articulos.destroy',$estilo->id) }}" method="POST">
-                    <a href="/estilo/{{$estilo->id}}/edit" class="btn btn-info">Edit</a>         
+                <td>
+                    <form action="{{ route('estilos.destroy',$estilo->nro_estilo) }}" method="POST">
+                        <a href="{{ route('estilos.edit',$estilo->nro_estilo) }}" class="btn btn-info">Editar</a>
                         @csrf
                         @method('DELETE')
-                    <button type="submit" class="btn btn-danger">Delete</button>
-                </form>-->          
-            </td>        
+                        <button type="submit" class="btn btn-danger">Eliminar</button>
+                    </form>                    
+                </td>    
+            </td>      
         </tr>
         @endforeach        
     </tbody>

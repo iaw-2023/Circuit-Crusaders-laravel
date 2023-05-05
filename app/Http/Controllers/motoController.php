@@ -53,9 +53,9 @@ class motoController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit($nro_marca)
+    public function edit($nro_moto)
     {
-        $moto = motoModel::find($nro_marca);
+        $moto = motoModel::find($nro_moto);
         return view('moto.edit', compact('moto'));
     }
     

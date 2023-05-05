@@ -4,7 +4,7 @@
 
 @section('content')
     <h1>Crear registros</h1>
-    <form action="/articulos" method="POST">
+    <form action="/motos" method="POST">
         @csrf
       <div class="mb-3">
         <label for="" class="form-label">Marca</label>

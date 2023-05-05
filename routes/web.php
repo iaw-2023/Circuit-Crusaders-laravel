@@ -1,6 +1,9 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\motoController;
+use App\Http\Controllers\estiloController;
+use App\Http\Controllers\ProfileController;
 
 /*
 |--------------------------------------------------------------------------
@@ -25,6 +28,13 @@ Route::middleware('auth')->group(function () {
     Route::delete('motos/{nro_moto}', [motoController::class,'destroy'])->name('motos.destroy');
 });
 
+Route::middleware('auth')->group(function () {
+    Route::get('estilos',[estiloController::class,'index'])->name('estilos.index');
+    Route::get('estilos/create',[estiloController::class,'create'])->name('estilos.create');
+    Route::get('estilos/edit/{nro_estilo}', [estiloController::class,'edit'])->name('estilos.edit');
+    Route::put('estilos/{nro_estilo}', [estiloController::class,'update'])->name('estilos.update');
+    Route::delete('estilos/{nro_estilo}', [estiloController::class,'destroy'])->name('estilos.destroy');
+});
 
 Route::get('/dashboard', function () {
     return view('dashboard');

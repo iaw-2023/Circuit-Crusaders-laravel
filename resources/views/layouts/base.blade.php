@@ -12,7 +12,6 @@
     <!-- Podríamos poner barra de navegación-->
   </head>
   <body>
-    <h1>MOTOMAMI</h1>
     <div class="container">
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
             <div class="container-fluid">

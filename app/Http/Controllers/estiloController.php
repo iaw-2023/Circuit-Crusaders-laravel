@@ -12,8 +12,9 @@ class estiloController extends Controller
      */
     public function index()
     {
-        $estilos = estiloModel:: all();
-        return views('estilo.index')->with('estilos',$estilos);
+        $estilos = estiloModel::all();
+
+        return view('estilo.index')->with('estilos',$estilos);
     }
 
     /**
@@ -21,7 +22,7 @@ class estiloController extends Controller
      */
     public function create()
     {
-        //
+        return view('estilo.create');
     }
 
     /**
@@ -29,7 +30,13 @@ class estiloController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $estilos= new estiloModel();
+        $estilos->nombre = $request->get('nombre');
+        $estilos->descripcion = $request->get('descripcion');
+
+        $estilos->save();
+        return redirect('/estilos');
+
     }
 
     /**
@@ -43,24 +50,36 @@ class estiloController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(estiloModel $estiloModel)
+    public function edit($nro_estilo)
     {
-        //
+        $estilo = estiloModel::find($nro_estilo);
+        return view('estilo.edit', compact('estilo'));
     }
+    
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, estiloModel $estiloModel)
+    public function update(Request $request, $nro_estilo)
     {
-        //
+        $estilo = estiloModel::find($nro_estilo);
+
+        $estilo->nombre = $request->get('nombre');
+        $estilo->descripcion = $request->get('descripcion');
+        
+        $estilo->save();
+
+        return redirect('estilos');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(estiloModel $estiloModel)
+  
+     public function destroy($nro_estilo)
     {
-        //
+        $estilo = estiloModel::findOrFail($nro_estilo);
+        $estilo->delete();
+        return redirect('estilos');
     }
 }
