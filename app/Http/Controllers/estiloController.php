@@ -12,7 +12,8 @@ class estiloController extends Controller
      */
     public function index()
     {
-        //
+        $estilos = estiloModel:: all();
+        return views('estilo.index')->with('estilos',$estilos);
     }
 
     /**

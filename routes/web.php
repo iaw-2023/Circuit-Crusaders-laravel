@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\estiloController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -29,7 +30,11 @@ Route::middleware('auth')->group(function () {
 });
 
 Route::get('/index', function () {
-    return view('moto.crearMoto');
+    return view('estilo.index');
 });
 
+//Route::get('index',[estiloController::class,'index']);
+
+
 require __DIR__.'/auth.php';
+
