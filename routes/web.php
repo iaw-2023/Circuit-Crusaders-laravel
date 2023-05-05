@@ -16,8 +16,6 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
-<<<<<<< Updated upstream
-=======
 
 Route::middleware('auth')->group(function () {
     Route::get('motos',[motoController::class,'index'])->name('motos.index');
@@ -39,4 +37,3 @@ Route::middleware('auth')->group(function () {
 });
 
 require __DIR__.'/auth.php';
->>>>>>> Stashed changes
