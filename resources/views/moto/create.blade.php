@@ -27,7 +27,7 @@
         <input id="patente" name="patente" type="text"  class="form-control" tabindex="3">
       </div>
 
-      <a href="/motos" class="btn btn-secondary" tabindex="5">Cancelar</a>
+      <a href="{{ route('motos.index') }}" class="btn btn-secondary" tabindex="5">Cancelar</a>
       <button type="submit" class="btn btn-primary" tabindex="4">Guardar</button>
     </form>
 @endsection

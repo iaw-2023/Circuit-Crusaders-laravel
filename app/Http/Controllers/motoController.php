@@ -30,7 +30,16 @@ class motoController extends Controller
      */
     public function store(Request $request)
     {
-      
+        $motos= new motoModel();
+        $motos->marca = $request->get('marca');
+        $motos->modelo = $request->get('modelo');
+        $motos->anio = $request->get('anio');
+        $motos->cilindrada = $request->get('cilindrada');
+        $motos->patente = $request->get('patente');
+
+        $motos->save();
+        return redirect('/motos');
+
     }
 
     /**
@@ -44,24 +53,39 @@ class motoController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(motoModel $motoModel)
+    public function edit($nro_marca)
     {
-        //
+        $moto = motoModel::find($nro_marca);
+        return view('moto.edit', compact('moto'));
     }
+    
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, motoModel $motoModel)
+    public function update(Request $request, $nro_moto)
     {
-        //
+        $moto = motoModel::find($nro_moto);
+
+        $moto->marca = $request->get('marca');
+        $moto->modelo = $request->get('modelo');
+        $moto->anio = $request->get('anio');
+        $moto->cilindrada = $request->get('cilindrada');
+        $moto->patente = $request->get('patente');
+
+        $moto->save();
+
+        return redirect('motos');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(motoModel $motoModel)
-    {
-        //
+  
+     public function destroy($nro_moto)
+{
+        $moto = motoModel::findOrFail($nro_moto);
+        $moto->delete();
+        return redirect('motos');
     }
 }

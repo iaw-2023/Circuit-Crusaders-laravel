@@ -14,7 +14,33 @@
   <body>
     <h1>MOTOMAMI</h1>
     <div class="container">
+<<<<<<< Updated upstream
         @yield('contenido')
+=======
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="motos">
+                    <img src="https://i.ibb.co/W2Pmn2H/logomotomami.png" alt="Bootstrap">
+                </a>
+              
+              <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                  <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="motos">Motos</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="motos/estilos">Estilos</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="motos/cliente">Cliente</a>
+                  </li>
+                  
+                </ul>
+              </div>
+            </div>
+          </nav>
+        @yield('content')
+>>>>>>> Stashed changes
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
   </body>

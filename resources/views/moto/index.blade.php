@@ -3,7 +3,7 @@
 @section('title', 'INDEX DE MOTOMAMI PAPA')
 
 @section('content')
-<a href="moto/create" class = "btn btn-primary"> Crear </a>
+<a href="motos/create" class = "btn btn-primary"> Crear </a>
 <table class="table table-dark table striped mt-4">
     <thead>
         <tr>
@@ -30,8 +30,16 @@
             <td>{{$moto->id_detalle}}</td>
             <td>{{$moto->id_estilo}}</td>
             <td>
-                <a href="moto/edit" class = "btn btn-info"> Editar </a>
-                <button class = "btn btn-danger"> Borrar </button>
+                <td>
+                    <form action="{{ route('motos.destroy',$moto->nro_moto) }}" method="POST">
+                        <a href="{{ route('motos.edit',$moto->nro_moto) }}" class="btn btn-info">Editar</a>
+                        @csrf
+                        @method('DELETE')
+                        <button type="submit" class="btn btn-danger">Eliminar</button>
+                    </form>
+                    
+                </td>
+                        
 
             </td>
 
