@@ -1,4 +1,4 @@
-@extends('layouts.base')
+@extends('layouts.app')
 
 @section('title', 'EDITAR ESTILOS-MOTOMAMI PAPA')
 
