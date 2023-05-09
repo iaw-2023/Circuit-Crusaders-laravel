@@ -28,6 +28,14 @@
     <label for="" class="form-label">Patente</label>
     <input id="patente" name="patente" type="text" step="any" class="form-control" value="{{$moto->patente}}">
   </div>
+  <div class="mb-3">
+    <label for="id_estilo">Estilo:</label>
+      <select class="form-control" id="id_estilo" name="id_estilo" >
+          @foreach($estilos as $estilo)
+              <option value="{{ $estilo->nro_estilo }}">{{ $estilo->nombre }}</option>  
+          @endforeach
+      </select required>
+  </div>
   <a href="{{ route('motos.index') }}" class="btn btn-secondary">Cancelar</a>
   <button type="submit" class="btn btn-primary">Guardar</button>
 </form>

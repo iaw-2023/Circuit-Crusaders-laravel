@@ -19,7 +19,6 @@ class MotosSeeder extends Seeder
             'anio' => '2022',
             'cilindrada' => '150cc.',
             'patente' => 'A 897 AAA',
-            'id_detalle' => '1',
             'id_estilo' => '1',
         ]);
 
@@ -29,7 +28,6 @@ class MotosSeeder extends Seeder
             'anio' => '2018',
             'cilindrada' => '125cc.',
             'patente' => 'C 087 AHG',
-            'id_detalle' => '3',
             'id_estilo' => '1',
         ]);
 
@@ -39,7 +37,6 @@ class MotosSeeder extends Seeder
             'anio' => '2020',
             'cilindrada' => '125cc.',
             'patente' => 'A 004 FDA',
-            'id_detalle' => '5',
             'id_estilo' => '4',
         ]);
 
@@ -49,7 +46,6 @@ class MotosSeeder extends Seeder
             'anio' => '2022',
             'cilindrada' => '250cc.',
             'patente' => 'D 897 THW',
-            'id_detalle' => '5',
             'id_estilo' => '3',
         ]);
 
@@ -59,7 +55,6 @@ class MotosSeeder extends Seeder
             'anio' => '2023',
             'cilindrada' => '650cc.',
             'patente' => 'G 999 AAA',
-            'id_detalle' => '4',
             'id_estilo' => '3',
         ]);
 
@@ -69,7 +64,6 @@ class MotosSeeder extends Seeder
             'anio' => '2022',
             'cilindrada' => '250cc.',
             'patente' => 'A 111 AAA',
-            'id_detalle' => '2',
             'id_estilo' => '2',
         ]);
 
@@ -79,7 +73,6 @@ class MotosSeeder extends Seeder
             'anio' => '2015',
             'cilindrada' => '320cc.',
             'patente' => 'H 456 TRS',
-            'id_detalle' => '2',
             'id_estilo' => '5',
         ]);
 
@@ -89,7 +82,6 @@ class MotosSeeder extends Seeder
             'anio' => '2022',
             'cilindrada' => '250cc.',
             'patente' => 'L 192 MHT',
-            'id_detalle' => '1',
             'id_estilo' => '1',
         ]);
 
@@ -99,7 +91,6 @@ class MotosSeeder extends Seeder
             'anio' => '2022',
             'cilindrada' => '125cc.',
             'patente' => 'A 827 AFA',
-            'id_detalle' => '1',
             'id_estilo' => '1',
         ]);
 
@@ -109,7 +100,6 @@ class MotosSeeder extends Seeder
             'anio' => '2022',
             'cilindrada' => '125cc.',
             'patente' => 'A 897 OPA',
-            'id_detalle' => '1',
             'id_estilo' => '2',
         ]);
     }

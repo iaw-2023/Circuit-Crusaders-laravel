@@ -25,6 +25,7 @@ Route::middleware('auth')->group(function () {
     Route::get('motos/create',[motoController::class,'create'])->name('motos.create');
     Route::get('motos/edit/{nro_moto}', [motoController::class,'edit'])->name('motos.edit');
     Route::put('motos/{nro_moto}', [motoController::class,'update'])->name('motos.update');
+    Route::post('motos', [motoController::class,'store'])->name('motos.store');
     Route::delete('motos/{nro_moto}', [motoController::class,'destroy'])->name('motos.destroy');
 });
 
@@ -33,6 +34,7 @@ Route::middleware('auth')->group(function () {
     Route::get('estilos/create',[estiloController::class,'create'])->name('estilos.create');
     Route::get('estilos/edit/{nro_estilo}', [estiloController::class,'edit'])->name('estilos.edit');
     Route::put('estilos/{nro_estilo}', [estiloController::class,'update'])->name('estilos.update');
+    Route::post('estilos', [estiloController::class,'store'])->name('estilos.store');
     Route::delete('estilos/{nro_estilo}', [estiloController::class,'destroy'])->name('estilos.destroy');
 });
 

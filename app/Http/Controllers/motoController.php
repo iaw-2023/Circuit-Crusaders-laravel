@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\motoModel;
+use App\Models\estiloModel;
+
 use Illuminate\Http\Request;
 
 class motoController extends Controller
@@ -22,7 +24,8 @@ class motoController extends Controller
      */
     public function create()
     {
-        return view('moto.create');
+        $estilos = estiloModel::all();
+        return view('moto.create', compact('estilos'));
     }
 
     /**
@@ -36,6 +39,8 @@ class motoController extends Controller
         $motos->anio = $request->get('anio');
         $motos->cilindrada = $request->get('cilindrada');
         $motos->patente = $request->get('patente');
+        $motos->id_estilo = $request->get('id_estilo');
+
 
         $motos->save();
         return redirect('/motos');
@@ -56,7 +61,8 @@ class motoController extends Controller
     public function edit($nro_moto)
     {
         $moto = motoModel::find($nro_moto);
-        return view('moto.edit', compact('moto'));
+        $estilos = estiloModel::all();
+        return view('moto.edit',['moto'=>$moto,'estilos'=>$estilos]);
     }
     
 
@@ -72,6 +78,8 @@ class motoController extends Controller
         $moto->anio = $request->get('anio');
         $moto->cilindrada = $request->get('cilindrada');
         $moto->patente = $request->get('patente');
+        $moto->id_estilo = $request->get('id_estilo');
+
 
         $moto->save();
 
