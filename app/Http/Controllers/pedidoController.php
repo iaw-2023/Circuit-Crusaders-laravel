@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\pedidoModel;
+use App\Models\detalleModel;
 use Illuminate\Http\Request;
+
 
 class pedidoController extends Controller
 {
@@ -12,9 +14,18 @@ class pedidoController extends Controller
      */
     public function index()
     {
-        //
+        $pedidos = pedidoModel::all();
+
+        return view('pedido.index')->with('pedidos',$pedidos);
     }
 
+    public function getReport($nro_pedido)
+    {   
+        $pedidos = pedidoModel::find($nro_pedido);
+        $detalles = detalleModel::all()->where('id_pedido',$nro_pedido);
+
+        return view('pedido.reporte', ['pedidos'=>$pedidos, 'detalles'=>$detalles]);
+    }
     /**
      * Show the form for creating a new resource.
      */

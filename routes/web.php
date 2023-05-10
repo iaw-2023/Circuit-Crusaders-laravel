@@ -1,4 +1,5 @@
 <?php
+use App\Http\Controllers\pedidoController;
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\motoController;
@@ -18,6 +19,12 @@ use App\Http\Controllers\ProfileController;
 
 Route::get('/', function () {
     return view('welcome');
+});
+
+Route::middleware('auth')->group(function () {
+    Route::get('pedidos',[pedidoController::class,'index'])->name('pedidos.index');
+    Route::get('pedidos/reporte/{nro_pedido}', [pedidoController::class,'getReport'])->name('pedidos.reporte');
+    Route::get('pedidos/reportePDF/{nro_pedido}', [pedidoController::class,'generateReport'])->name('pedidos.reportePDF');
 });
 
 Route::middleware('auth')->group(function () {

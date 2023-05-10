@@ -8,4 +8,11 @@ use Illuminate\Database\Eloquent\Model;
 class detalleModel extends Model
 {
     use HasFactory;
+    protected $table = 'detalles'; 
+    protected $primaryKey = 'nro_detalle';
+
+    public function pedido()
+    {
+        return $this->belongsTo(pedidoModel::class, 'id_pedido');
+    }
 }
