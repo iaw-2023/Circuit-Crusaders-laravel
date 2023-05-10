@@ -1,10 +1,11 @@
 @extends('layouts.app')
 
-@section('title', 'INDEX DE ESTILO-MOTOMAMI PAPA')
-
+@section('css')
+    <link href= https://cdn.datatables.net/1.13.4/css/dataTables.bootstrap5.min.css rel="stylesheet">
+@endsection
 @section('content')
     
-    <table class="table table-dark table-striped mt-4">
+    <table id= "estilos"class="table table-dark table-striped mt-4">
     <thead>
         <tr>
             <th scope="col">Id</th>
@@ -35,4 +36,17 @@
     </tbody>
     </table>
     <a href="estilos/create" class="btn btn-primary">Crear</a>
+    @section('js')
+    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.4/js/dataTables.bootstrap5.min.js"></script>
+
+    <script>
+        $(document).ready(function () {
+        $('#estilos').DataTable({
+            "lengthMenu":[[5,10,50,-1],[5,10,50,"All"]]
+        });
+    });
+    </script>
+    @endsection
 @endsection
