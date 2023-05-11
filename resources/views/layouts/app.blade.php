@@ -36,6 +36,16 @@
                 <li class="nav-item">
                     <a class="nav-link" href="{{ url('/pedidos') }}">Pedidos</a>
                 </li>
+                <li class="nav-item dropdown">
+                    <a class="btn btn-dark dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                      Reportes
+                    </a>
+                    <ul class="dropdown-menu dropdown-menu-dark">
+                      <li><a class="dropdown-item" href="reporteCliente">Reportes por clientes</a></li>
+                      <li><a class="dropdown-item" href="reportePedido">Reportes por pedidos</a></li>
+                      <li><a class="dropdown-item" href="reporteFecha">Reportes por fechas</a></li>
+                    </ul>
+                  </li>
             </ul>
     
             <div class="ml-auto ">
