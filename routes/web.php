@@ -4,7 +4,11 @@ use App\Http\Controllers\pedidoController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\motoController;
 use App\Http\Controllers\estiloController;
+use App\Http\Controllers\reportePedidoController;
+use App\Http\Controllers\reporteClienteController;
+use App\Http\Controllers\reporteFechaController;
 use App\Http\Controllers\ProfileController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -19,12 +23,6 @@ use App\Http\Controllers\ProfileController;
 
 Route::get('/', function () {
     return view('welcome');
-});
-
-Route::middleware('auth')->group(function () {
-    Route::get('pedidos',[pedidoController::class,'index'])->name('pedidos.index');
-    Route::get('pedidos/reporte/{nro_pedido}', [pedidoController::class,'getReport'])->name('pedidos.reporte');
-    Route::get('pedidos/reportePDF/{nro_pedido}', [pedidoController::class,'generateReport'])->name('pedidos.reportePDF');
 });
 
 Route::middleware('auth')->group(function () {
@@ -54,5 +52,24 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
+
+Route::middleware('auth')->group(function () {
+    /*Route::get('pedidos',[pedidoController::class,'index'])->name('pedidos.index');
+    Route::get('pedidos/reporte/{nro_pedido}', [pedidoController::class,'getReport'])->name('pedidos.reporte');
+    Route::get('pedidos/reportePDF/{nro_pedido}', [pedidoController::class,'generateReport'])->name('pedidos.reportePDF');
+    */
+});
+
+Route::get('/reportes', function () {
+    return view('reporte.index');
+})->middleware(['auth', 'verified'])->name('reportes');
+
+Route::middleware('auth')->group(function () {
+    Route::get('reportes/reportePedido',[reportePedidoController::class,'index'])->name('reportes.reportePedido');
+    Route::get('reportes/reporteCliente',[reporteClienteController::class,'index'])->name('reportes.reporteCliente');
+    Route::get('reportes/reporteFecha',[reporteFechaController::class,'index'])->name('reportes.reporteFecha');
+
+});
+
 
 require __DIR__.'/auth.php';
