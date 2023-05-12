@@ -31,7 +31,7 @@
                     <a class="nav-link" href="{{ url('/estilos') }}">Estilos</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ url('/cliente') }}">Cliente</a>
+                    <a class="nav-link" href="{{ url('/clientes') }}">Clientes</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="{{ url('/pedidos') }}">Pedidos</a>
@@ -41,9 +41,9 @@
                       Reportes
                     </a>
                     <ul class="dropdown-menu dropdown-menu-dark">
-                      <li><a class="dropdown-item" href="reporteCliente">Reportes por clientes</a></li>
+                      <li><a class="dropdown-item" href="{{route('reportePorCliente')}}">Reportes por clientes</a></li>
                       <li><a class="dropdown-item" href="reportePedido">Reportes por pedidos</a></li>
-                      <li><a class="dropdown-item" href="reporteFecha">Reportes por fechas</a></li>
+                      <li><a class="dropdown-item" href="{{route('reportePorFecha')}}">Reportes por fechas</a></li>
                     </ul>
                   </li>
             </ul>

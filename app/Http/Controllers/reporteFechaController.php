@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\pedidoModel;
+use App\Models\detalleModel;
 
 class reporteFechaController extends Controller
 {
@@ -12,6 +14,24 @@ class reporteFechaController extends Controller
     public function index()
     {
         return view('reporte.reporteFecha');
+    }
+
+    public function searchOrders(Request $request)
+    {
+        $fecha_inicio = $request->input('fecha_inicio');
+        $fecha_fin = $request->input('fecha_fin');
+    
+        $pedidos = pedidoModel::whereBetween('fecha_pedido', [$fecha_inicio, $fecha_fin])->get();
+    
+        return view('reporte.reporteFecha', ['pedidos' => $pedidos]);
+    }
+
+    public function openOrders($nro_pedido)
+    {
+        $pedidos = pedidoModel::find($nro_pedido);
+        $detalles = detalleModel::all()->where('id_pedido',$nro_pedido);
+
+        return view('pedido.reporte', ['pedidos'=>$pedidos, 'detalles'=>$detalles]);
     }
 
     /**

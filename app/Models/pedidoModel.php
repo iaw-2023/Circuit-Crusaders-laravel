@@ -15,4 +15,9 @@ class pedidoModel extends Model
     {
         return $this->hasMany(detalleModel::class,'nro_pedido');
     }
+
+    public function cliente()
+    {
+        return $this->belongsTo(clienteModel::class, 'id_cliente');
+    }
 }

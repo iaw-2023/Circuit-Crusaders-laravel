@@ -26,6 +26,10 @@ Route::get('/', function () {
 });
 
 Route::middleware('auth')->group(function () {
+    Route::get('clientes',[clienteController::class,'index'])->name('clientes.index');
+});
+
+Route::middleware('auth')->group(function () {
     Route::get('motos',[motoController::class,'index'])->name('motos.index');
     Route::get('motos/create',[motoController::class,'create'])->name('motos.create');
     Route::get('motos/edit/{nro_moto}', [motoController::class,'edit'])->name('motos.edit');
@@ -58,6 +62,7 @@ Route::middleware('auth')->group(function () {
     Route::get('pedidos/reporte/{nro_pedido}', [pedidoController::class,'getReport'])->name('pedidos.reporte');
     Route::get('pedidos/reportePDF/{nro_pedido}', [pedidoController::class,'generateReport'])->name('pedidos.reportePDF');
     */
+    
 });
 
 Route::get('/reportes', function () {
@@ -65,10 +70,14 @@ Route::get('/reportes', function () {
 })->middleware(['auth', 'verified'])->name('reportes');
 
 Route::middleware('auth')->group(function () {
-    Route::get('reportes/reportePedido',[reportePedidoController::class,'index'])->name('reportes.reportePedido');
-    Route::get('reportes/reporteCliente',[reporteClienteController::class,'index'])->name('reportes.reporteCliente');
-    Route::get('reportes/reporteFecha',[reporteFechaController::class,'index'])->name('reportes.reporteFecha');
+    //Route::get('reportes/reportePedido',[reportePedidoController::class,'index'])->name('reportes.reportePedido');
+    //Route::get('reportes/reporteCliente',[reporteClienteController::class,'index'])->name('reportes.reporteCliente');
+    //Route::get('reportes/reporteFecha',[reporteFechaController::class,'index'])->name('reportes.reporteFecha');
 
+    Route::post('reportes/reporteCliente', [reporteClienteController::class,'searchOrders'])->name('reportePorCliente');
+    Route::get('reportes/reporteFecha', [reporteFechaController::class, 'searchOrders'])->name('reportePorFecha');
+
+    Route::get('pedidos/reporte/{nro_pedido}', [reporteClienteController::class,'openOrders'])->name('abrirPedido');  
 });
 
 

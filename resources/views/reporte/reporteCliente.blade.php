@@ -6,31 +6,34 @@
     <h2>BUSCAR PEDIDOS POR CLIENTE</h2>
         
     <label for="" class="form-label">E-mail cliente</label>
-    <form action="{{ route('estilos.store') }}" method="POST">
+    <form method="POST" action="{{ route('reportePorCliente') }}">
         @csrf
-        <div class="mb-3">
-            <input id="mail" name="mail" type="text" class="form-control" placeholder="Ingredar e-mail del cliente" aria-label="E-mail" aria-describedby="basic-addon2" required>
-                <!--<button class="btn btn-outline-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">Dropdown</button>
-                <ul class="dropdown-menu dropdown-menu-end">
-                    <li><a class="dropdown-item" href="#">@gmail.com</a></li>
-                    <li><a class="dropdown-item" href="#">@hotmail.com</a></li>
-                    <li><a class="dropdown-item" href="#">@outlook.com</a></li>
-                </ul>-->    
-        </div>    
-        <a href="{{ route('estilos.index') }}" class="btn btn-secondary" tabindex="5">BUSCAR</a>
-    </form>   
-    
-    <table class="table table-dark table-striped mt-4">
-        <thead>
-            <tr>
-                <th scope="col">Nombre</th>
-                <th scope="col">Apellido</th>
-                <th scope="col">E-mail</th>
-                <th scope="col">Pedido</th>    
-            </tr>
-        </thead>
-        <tbody> 
-                
-        </tbody>
-    </table>        
+        <label for="mail">Correo electrónico del cliente:</label>
+        <input type="email" name="mail" id="mail" required>
+        <button class="btn btn-primary" type="submit">Buscar pedidos</button>
+    </form>
+    @if (isset($error))
+        <p>{{ $error }}</p>
+    @elseif (isset($cliente) && isset($pedidos))
+        <h1>Pedidos de {{ $cliente->nombre }} {{ $cliente->apellido }}</h1>
+        <p>Correo electrónico: {{ $cliente->email }}</p>
+        <table class="table table-dark table-striped mt-4">
+            <thead>
+                <tr>
+                    <th scope="col">Codigo de pedido</th>
+                    <th scope="col">Fecha</th>
+                    <th scope="col">Detalle</th>    
+                </tr>
+            </thead>
+            <tbody>
+                @foreach ($pedidos as $pedido)
+                    <tr>
+                        <td>{{$pedido->nro_pedido}}</td>
+                        <td>{{$pedido->fecha_pedido}}</td>
+                        <td><a href="{{ route("abrirPedido",$pedido->nro_pedido) }}" class="btn btn-info">Abrir Detalles</a></td>
+                    </tr>
+                @endforeach
+            </tbody>
+        </table>
+    @endif
 @endsection
