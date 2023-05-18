@@ -11,10 +11,10 @@
           <th scope="col">Id </th>
           <th scope="col">Marca</th>
           <th scope="col">Modelo</th>
-          <th scope="col">Anio</th>
+          <th scope="col">Año</th>
           <th scope="col">Cilindrada</th>
           <th scope="col">Patente</th>
-          <th scope="col">Id_estilo</th>
+          <th scope="col">Estilo</th>
           <th scope="col">Acciones</th>
         </tr>
     </thead>
@@ -27,7 +27,7 @@
             <td>{{$moto->anio}}</td>
             <td>{{$moto->cilindrada}}</td>
             <td>{{$moto->patente}}</td>
-            <td>{{$moto->id_estilo }}</td>
+            <td>{{$moto->estilo->nombre }}</td>
             <td>
                 
                     <form action="{{ route('motos.destroy',$moto->nro_moto) }}" method="POST">

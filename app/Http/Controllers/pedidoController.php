@@ -14,7 +14,7 @@ class pedidoController extends Controller
      */
     public function index()
     {
-        $pedidos = pedidoModel::all();
+        $pedidos = pedidoModel::with('cliente')->get();
 
         return view('pedido.index')->with('pedidos',$pedidos);
     }

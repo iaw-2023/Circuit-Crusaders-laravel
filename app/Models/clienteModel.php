@@ -11,7 +11,7 @@ class clienteModel extends Model
     protected $table = 'clientes'; 
     protected $primaryKey = 'nro_cliente';
 
-    public function pedidos()
+    public function detalle()
     {
         return $this->hasMany(detalleModel::class,'nro_cliente');
     }

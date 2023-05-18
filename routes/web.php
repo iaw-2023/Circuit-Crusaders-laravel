@@ -8,6 +8,10 @@ use App\Http\Controllers\reportePedidoController;
 use App\Http\Controllers\reporteClienteController;
 use App\Http\Controllers\reporteFechaController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\clienteController;
+use App\Http\Controllers\pedidosController;
+
+
 
 
 /*
@@ -58,11 +62,8 @@ Route::middleware('auth')->group(function () {
 });
 
 Route::middleware('auth')->group(function () {
-    /*Route::get('pedidos',[pedidoController::class,'index'])->name('pedidos.index');
+    Route::get('pedidos',[pedidoController::class,'index'])->name('pedidos.index');
     Route::get('pedidos/reporte/{nro_pedido}', [pedidoController::class,'getReport'])->name('pedidos.reporte');
-    Route::get('pedidos/reportePDF/{nro_pedido}', [pedidoController::class,'generateReport'])->name('pedidos.reportePDF');
-    */
-    
 });
 
 Route::get('/reportes', function () {
@@ -77,7 +78,7 @@ Route::middleware('auth')->group(function () {
     Route::post('reportes/reporteCliente', [reporteClienteController::class,'searchOrders'])->name('reportePorCliente');
     Route::get('reportes/reporteFecha', [reporteFechaController::class, 'searchOrders'])->name('reportePorFecha');
 
-    Route::get('pedidos/reporte/{nro_pedido}', [reporteClienteController::class,'openOrders'])->name('abrirPedido');  
+   // Route::get('pedidos/reporte/{nro_pedido}', [reporteClienteController::class,'openOrders'])->name('abrirPedido');  
 });
 
 

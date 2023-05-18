@@ -14,9 +14,9 @@ class motoController extends Controller
      */
     public function index()
     {
-        $motos = motoModel::all();
+        $motos = motoModel::with('estilo')->get();
 
-        return view('moto.index')->with('motos',$motos);
+        return view('moto.index')->with('motos', $motos);
     }
 
     /**

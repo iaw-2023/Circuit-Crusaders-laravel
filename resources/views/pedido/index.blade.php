@@ -18,9 +18,8 @@
             <tr>
                 <td>{{$pedido->nro_pedido}}</td>
                 <td>{{$pedido->fecha_pedido}}</td>
-                <td>{{$pedido->id_cliente}}</td>
-                <td><a href="{{ route("pedidos.reporte",$pedido->nro_pedido) }}" class="btn btn-info">Abrir Reporte</a></td>
-                <td><a href="{{ route("pedidos.reportePDF",$pedido->nro_pedido) }}" class="btn btn-info">Generar Reporte</a></td>
+                <td>{{$pedido->cliente->email}}</td>
+                <td><a href="{{ route("pedidos.reporte",$pedido->nro_pedido) }}" class="btn btn-info">Abrir detalles</a></td>
             </tr>
             @endforeach        
         </tbody>

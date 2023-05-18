@@ -19,7 +19,7 @@
                     <tr> 
                         <td>{{$pedidos->nro_pedido}}</td>
                         <td>{{$pedidos->fecha_pedido}}</td>
-                        <td>{{$pedidos->id_cliente}}</td>
+                        <td>{{$pedidos->cliente->email}}</td>
                         <td>{{$detalle->nro_detalle}}</td>
                         <td>${{$detalle->monto}}</td>
                     </tr>
