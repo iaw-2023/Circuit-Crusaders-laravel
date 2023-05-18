@@ -66,19 +66,19 @@ Route::middleware('auth')->group(function () {
     Route::get('pedidos/reporte/{nro_pedido}', [pedidoController::class,'getReport'])->name('pedidos.reporte');
 });
 
-Route::get('/reportes', function () {
-    return view('reporte.index');
-})->middleware(['auth', 'verified'])->name('reportes');
-
 Route::middleware('auth')->group(function () {
     //Route::get('reportes/reportePedido',[reportePedidoController::class,'index'])->name('reportes.reportePedido');
     //Route::get('reportes/reporteCliente',[reporteClienteController::class,'index'])->name('reportes.reporteCliente');
     //Route::get('reportes/reporteFecha',[reporteFechaController::class,'index'])->name('reportes.reporteFecha');
 
-    Route::post('reportes/reporteCliente', [reporteClienteController::class,'searchOrders'])->name('reportePorCliente');
-    Route::get('reportes/reporteFecha', [reporteFechaController::class, 'searchOrders'])->name('reportePorFecha');
+    Route::get('reporteCliente', [reporteClienteController::class,'searchOrders'])->name('reportePorCliente');
+    Route::post('reporteCliente', [reporteClienteController::class,'searchOrders'])->name('reportePorCliente');
 
-   // Route::get('pedidos/reporte/{nro_pedido}', [reporteClienteController::class,'openOrders'])->name('abrirPedido');  
+    Route::get('reporteFecha', [reporteFechaController::class, 'searchOrders'])->name('reportePorFecha');
+
+    Route::post('reporteFecha', [reporteFechaController::class, 'searchOrders'])->name('reportePorFecha');
+
+    Route::get('pedidos/reporteFecha/{nro_pedido}', [reporteClienteController::class,'openOrders'])->name('abrirPedido');  
 });
 
 
