@@ -1,6 +1,5 @@
 @extends('layouts.app')
 
-@section('title', 'create_estilo')
 
 @section('content')
     <h1>Agregar estilo</h1>

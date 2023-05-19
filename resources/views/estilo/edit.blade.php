@@ -1,6 +1,5 @@
 @extends('layouts.app')
 
-@section('title', 'EDITAR ESTILOS-MOTOMAMI PAPA')
 
 @section('content')
   <h2>EDITAR REGISTROS</h2>

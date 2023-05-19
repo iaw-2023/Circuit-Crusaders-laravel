@@ -13,8 +13,7 @@ class reporteClienteController extends Controller
      * Display a listing of the resource.
      */
     public function index()
-    {   
-        return view('reporte.reporteCliente');
+    {
     }
 
     public function searchOrders(Request $request)
@@ -36,6 +35,7 @@ class reporteClienteController extends Controller
 
         return view('pedido.reporte', ['pedidos'=>$pedidos, 'detalles'=>$detalles]);
     }
+    
     /**
      * Show the form for creating a new resource.
      */
