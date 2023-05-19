@@ -67,17 +67,10 @@ Route::middleware('auth')->group(function () {
 });
 
 Route::middleware('auth')->group(function () {
-    //Route::get('reportes/reportePedido',[reportePedidoController::class,'index'])->name('reportes.reportePedido');
-    //Route::get('reportes/reporteCliente',[reporteClienteController::class,'index'])->name('reportes.reporteCliente');
-    //Route::get('reportes/reporteFecha',[reporteFechaController::class,'index'])->name('reportes.reporteFecha');
-
     Route::get('reporteCliente', [reporteClienteController::class,'searchOrders'])->name('reportePorCliente');
     Route::post('reporteCliente', [reporteClienteController::class,'searchOrders'])->name('reportePorCliente');
-
     Route::get('reporteFecha', [reporteFechaController::class, 'searchOrders'])->name('reportePorFecha');
-
     Route::post('reporteFecha', [reporteFechaController::class, 'searchOrders'])->name('reportePorFecha');
-
     Route::get('pedidos/reporteFecha/{nro_pedido}', [reporteClienteController::class,'openOrders'])->name('abrirPedido');  
 });
 
