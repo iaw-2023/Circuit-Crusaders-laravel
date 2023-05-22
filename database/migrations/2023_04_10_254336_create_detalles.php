@@ -14,9 +14,7 @@ return new class extends Migration
         Schema::create('detalles', function (Blueprint $table) {
             $table->id('nro_detalle');
             $table->timestamps();
-
-            $table->double('monto');
-
+            
             $table->unsignedBigInteger('id_pedido');
             $table->unsignedBigInteger('id_moto');
 

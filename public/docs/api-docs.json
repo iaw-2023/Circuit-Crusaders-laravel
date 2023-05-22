@@ -1,0 +1,319 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "Api del consecionario de motos Motomami",
+    "description": "Esta API se encarga de manejar la informacion de la base de datos de la Motomami.",
+    "version": "1.0.0"
+  },
+  "servers": [
+    {
+      "url": "https://circuit-crusaders-laravel-agusl1660.vercel.app/rest/"
+    }
+  ],
+  "tags": [
+    {
+      "name": "Motos"
+    },
+    {
+      "name": "Estilos"
+    },
+    {
+      "name": "Pedidos"
+    }
+  ],
+  "paths": {
+    "/motos": {
+      "get": {
+        "tags": [
+          "Motos"
+        ],
+        "summary": "Devuelve todas las motos del concesionario.",
+        "responses": {
+          "200": {
+            "description": "(OK) Las motos fueron obtenidas correctamente.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "nro_moto": {
+                        "type": "integer",
+                        "description": "Id de la moto."
+                      },
+                      "marca": {
+                        "type": "string",
+                        "description": "Marca de la moto."
+                      },
+                      "modelo": {
+                        "type": "string",
+                        "description": "Modelo de la moto."
+                      },
+                      "anio": {
+                        "type": "integer",
+                        "description": "Año de fabricacion de la moto."
+                      },
+                      "cilindrada": {
+                        "type": "string",
+                        "description": "Cilindrada de la moto."
+                      },
+                      "patente": {
+                        "type": "string",
+                        "description": "Patente de la moto."
+                      },
+                      "id_estilo": {
+                        "type": "string",
+                        "description": "Estilo asociado a la moto."
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/estilos": {
+      "get": {
+        "tags": [
+          "Estilos"
+        ],
+        "summary": "Devuelve todos los estilos asociados a las motos de la concesionaria.",
+        "responses": {
+          "200": {
+            "description": "(OK) Los estilos fueron obtenidos correctamente.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "nro_estilo": {
+                        "type": "integer",
+                        "description": "Identificador del estilo."
+                      },
+                      "nombre": {
+                        "type": "string",
+                        "description": "Nombre del estilo."
+                      },
+                      "descripcion": {
+                        "type": "integer",
+                        "description": "Breve descripcion del estilo."
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/motos/estilos/{id_estilo}": {
+      "get": {
+        "tags": [
+          "Motos"
+        ],
+        "summary": "Devuelve todas las motos de un estilo.",
+        "parameters": [
+          {
+            "name": "id_estilo",
+            "in": "path",
+            "description": "Identificador del estilo de las motos.",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "(OK) Las motos fueron obtenidos correctamente.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "nro_moto": {
+                        "type": "integer",
+                        "description": "Identificador de la moto."
+                      },
+                      "marca": {
+                        "type": "string",
+                        "description": "Marca de la moto."
+                      },
+                      "modelo": {
+                        "type": "string",
+                        "description": "Modelo de la moto."
+                      },
+                      "cilindrada": {
+                        "type": "string",
+                        "description": "Cilindrada de la moto."
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/motos/marca/{marca}": {
+      "get": {
+        "tags": [
+          "Motos"
+        ],
+        "summary": "Devuelve todas las motos de una marca.",
+        "parameters": [
+          {
+            "name": "marca",
+            "in": "path",
+            "description": "Marca de las motos.",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "(OK) Las motos fueron obtenidos correctamente.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "nro_moto": {
+                        "type": "integer",
+                        "description": "Identificador de la moto."
+                      },
+                      "nombre": {
+                        "type": "string",
+                        "description": "Nombre del estilo de la moto."
+                      },
+                      "modelo": {
+                        "type": "string",
+                        "description": "Modelo de la moto."
+                      },
+                      "cilindrada": {
+                        "type": "string",
+                        "description": "Cilindrada de la moto."
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/pedido": {
+      "post": {
+        "tags": [
+          "Pedidos"
+        ],
+        "summary": "Inserta un nuevo pedido.",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "id_cliente": {
+                    "type": "integer",
+                    "description": "Identificador del cliente que realiza el pedido."
+                  },
+                  "motos": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "id_moto": {
+                          "type": "integer",
+                          "description": "Identificador de la moto del pedido."
+                        },
+                        "monto": {
+                          "type": "string",
+                          "description": "Monto de las motos del pedido."
+                        }
+                      }
+                    },
+                    "description": "Motos del pedido."
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "(OK) El pedido fue insertado correctamente."
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "Motos": {
+        "type": "object",
+        "properties": {
+          "nro_moto": {
+            "type": "integer",
+            "description": "Id de la moto."
+          },
+          "marca": {
+            "type": "string",
+            "description": "Marca de la moto."
+          },
+          "modelo": {
+            "type": "string",
+            "description": "Modelo de la moto."
+          },
+          "anio": {
+            "type": "integer",
+            "description": "Año de fabricacion de la moto."
+          },
+          "cilindrada": {
+            "type": "string",
+            "description": "Cilindrada de la moto."
+          },
+          "patente": {
+            "type": "string",
+            "description": "Patente de la moto."
+          },
+          "id_estilo": {
+            "type": "string",
+            "description": "Estilo asociado a la moto."
+          }
+        }
+      },
+      "Estilos": {
+        "type": "object",
+        "properties": {
+          "nro_estilo": {
+            "type": "integer",
+            "description": "Identificador del estilo."
+          },
+          "nombre": {
+            "type": "string",
+            "description": "Nombre del estilo."
+          },
+          "descripcion": {
+            "type": "integer",
+            "description": "Breve descripcion del estilo."
+          }
+        }
+      }
+    }
+  }
+}

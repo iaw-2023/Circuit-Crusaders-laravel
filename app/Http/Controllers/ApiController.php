@@ -8,44 +8,23 @@ use App\Models\estiloModel;
 use App\Models\clienteModel;
 use App\Models\pedidoModel;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\DB;
+
 use Illuminate\Http\Request;
 
 class ApiController extends Controller
 {
-
-    public function login(Request $request)
-    {
-        $response = ["status"=>0,"msg"=>""];
-
-        $data = json_decode($request->getContent());
-
-        $user = User::where('email',$data->email)->first();
-
-        if($user){
-            if(Hash::check($data->password,$user->password)){
-                $token = $user->createToken("token");
-                $response["status"] = 1;
-                $response["msg"] = $token->plainTextToken;
-            }
-            else{
-                $response["msg"]="Credenciales incorrectas.";
-            }
-        }
-        else{
-            $response["msg"]="Usuario no encontrado.";
-        }
-
-        return response()->json($response);
-    }
-
+    
     public function motos(Request $request)
     {
-        $motos = motoModel::all();
-
+        $motos = DB::table('motos')
+        ->select('nro_moto','marca','modelo','anio', 'cilindrada','patente','id_estilo')
+        ->get();
         return response()->json($motos);
 
     }
 
+    
     public function estilos(Request $request)
     {
         $estilos = estiloModel::all();
@@ -54,38 +33,40 @@ class ApiController extends Controller
 
     }
 
-    public function clientes(Request $request)
+    public function motosPorEstilo (Request $request)
     {
-        $clientes = clienteModel::all();
-
-        return response()->json($clientes);
-
-    }
-
-    public function pedidos(Request $request)
-    {
-        $pedidos = pedidoModel::all();
-
-        return response()->json($pedidos);
-
-    }
-
-    public function motoPorEstilo (Request $request)
-    {
-        $motos = motoModel:: where('nro_moto',$request->id);
-        ->select('moto.nro_moto','moto.marca','moto.modelo', 'moto.cilindrada')
-        ->get();
+        $motos = motoModel:: where('id_estilo',$request->id_estilo)
+            ->select('motos.nro_moto','motos.marca','motos.modelo', 'motos.cilindrada')
+            ->get();
         return response()->json($motos);
     }
 
-    public function motoPorMarca (Request $request)
+    public function motosPorMarca (Request $request)
     {
-        $motos = DB:: table('estilos');
-        ->join('moto.estilo','=','estilo.nro_estilo')
-        ->select('moto.nro_moto','estilo.nombre','moto.modelo', 'moto.cilindrada')
-        ->where('estilo.nro_estilo',$request->id)
-        ->get();
+        $motos = DB:: table('motos')
+            ->join('estilos','motos.id_estilo','=','estilos.nro_estilo')
+            ->select('motos.nro_moto','estilos.nombre','motos.modelo', 'motos.cilindrada')
+            ->where('motos.marca',$request->marca)
+            ->get();
         return response()->json($motos);
     }
 
+    public function pedido(Request $request)
+    {
+        $pedido = new pedidoModel();
+        $pedido -> nro_pedido = $request->nro_pedido;
+        $pedido -> fecha_pedido = now();
+        $pedido -> created_at = now();
+        $pedido -> update_at = now();
+        $pedido -> save();
+
+        foreach($request->motos as $moto){
+            $detalle= new detalleModel();
+            $detalle -> created_at = now();
+            $detalle -> update_at = now();
+            $detalle -> id_pedido = $pedido->nro_pedido;
+            $detalle -> id_moto = $moto["nro_moto"];
+            $detalle-> save();
+        }
+    }
 }
