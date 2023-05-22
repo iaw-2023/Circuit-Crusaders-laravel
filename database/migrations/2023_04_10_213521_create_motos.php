@@ -16,7 +16,6 @@ return new class extends Migration
             $table->timestamps();
             $table->string('marca');
             $table->string('modelo');
-            $table->double('monto');
             $table->integer('anio');
             $table->string('cilindrada');
             $table->string('patente');

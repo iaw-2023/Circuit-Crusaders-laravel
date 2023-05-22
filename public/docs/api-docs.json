@@ -228,21 +228,21 @@
               "schema": {
                 "type": "object",
                 "properties": {
-                  "id_cliente": {
+                  "nro_pedido": {
                     "type": "integer",
-                    "description": "Identificador del cliente que realiza el pedido."
+                    "description": "Identificador del pedido."
                   },
                   "motos": {
                     "type": "array",
                     "items": {
                       "type": "object",
                       "properties": {
-                        "id_moto": {
+                        "nro_moto": {
                           "type": "integer",
                           "description": "Identificador de la moto del pedido."
                         },
                         "monto": {
-                          "type": "string",
+                          "type": "double",
                           "description": "Monto de las motos del pedido."
                         }
                       }

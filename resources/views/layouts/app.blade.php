@@ -42,7 +42,6 @@
                     </a>
                     <ul class="dropdown-menu dropdown-menu-dark">
                       <li><a class="dropdown-item" href="{{route('reportePorCliente')}}">Reportes por clientes</a></li>
-                      <li><a class="dropdown-item" href="reportePedido">Reportes por pedidos</a></li>
                       <li><a class="dropdown-item" href="{{route('reportePorFecha')}}">Reportes por fechas</a></li>
                     </ul>
                   </li>

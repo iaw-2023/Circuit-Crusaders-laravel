@@ -63,10 +63,11 @@ class ApiController extends Controller
         foreach($request->motos as $moto){
             $detalle= new detalleModel();
             $detalle -> created_at = now();
-            $detalle -> update_at = now();
+            $detalle -> update_at = now();           
             $detalle -> id_pedido = $pedido->nro_pedido;
             $detalle -> id_moto = $moto["nro_moto"];
             $detalle-> save();
         }
     }
+
 }
