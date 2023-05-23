@@ -57,7 +57,7 @@
       </div>
       <div class="mb-3">
         <label for="" class="form-label">Costo</label>
-        <input id="monto" name="monto" type="number" class="form-control" tabindex="3" required>
+        <input id="monto" name="monto" type="number" min="0" step="0.01" class="form-control" tabindex="3" required>
       </div>
 
       <a href="{{ route('motos.index') }}" class="btn btn-secondary" tabindex="5">Cancelar</a>

@@ -14,9 +14,9 @@
           <th scope="col">Año</th>
           <th scope="col">Cilindrada</th>
           <th scope="col">Patente</th>
+          <th scope="col">Costo</th>
           <th scope="col">Estilo</th>
           <th scope="col">Acciones</th>
-          <th scope="col">Costo</th>
         </tr>
     </thead>
     <tbody>

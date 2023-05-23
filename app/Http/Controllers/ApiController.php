@@ -17,9 +17,8 @@ class ApiController extends Controller
     
     public function motos(Request $request)
     {
-        $motos = DB::table('motos')
-        ->select('nro_moto','marca','modelo','anio', 'cilindrada','patente','id_estilo')
-        ->get();
+        $motos = motoModel::all();
+
         return response()->json($motos);
 
     }

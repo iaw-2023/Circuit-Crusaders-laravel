@@ -7,14 +7,13 @@
 @endsection
 
 @section('content')
-    <table id="pedido" class="table table-dark table-striped mt-4">
+    <table id="ped" class="table table-dark table-striped mt-4">
         <thead>
             <tr>
                 <th scope="col">Id</th>
                 <th scope="col">Fecha</th>
                 <th scope="col">Cliente</th>
                 <th scope="col">Reporte</th>
-                <th scope="col"></th>
             </tr>
         </thead>
         <tbody> 
@@ -36,7 +35,7 @@
     
     <script>
         $(document).ready(function () {
-        $('#pedido').DataTable({
+        $('#ped').DataTable({
             "lengthMenu":[[5,10,50,-1],[5,10,50,"All"]]
         });
     });

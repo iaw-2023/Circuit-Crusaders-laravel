@@ -5,7 +5,9 @@
     
     <form method="POST" action="{{ route('login') }}"  >
         @csrf
-
+        <div style=" align-items: center; justify-content: center;">
+                <img style="width: 50%;" src="https://i.ibb.co/W2Pmn2H/logomotomami.png" alt="Bootstrap">            
+        </div>
         <!-- Email Address -->
         <div >
             <x-input-label for="email" :value="__('Email')" />
