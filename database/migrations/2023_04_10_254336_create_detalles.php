@@ -15,8 +15,6 @@ return new class extends Migration
             $table->id('nro_detalle');
             $table->timestamps();
 
-            $table->double('monto');
-
             $table->unsignedBigInteger('id_pedido');
             $table->unsignedBigInteger('id_moto');
 

@@ -20,4 +20,5 @@ class pedidoModel extends Model
     {
         return $this->belongsTo(clienteModel::class, 'id_cliente');
     }
+
 }

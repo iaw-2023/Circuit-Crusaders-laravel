@@ -15,4 +15,9 @@ class detalleModel extends Model
     {
         return $this->belongsTo(pedidoModel::class, 'id_pedido');
     }
+
+    public function moto()
+    {
+        return $this->hasOne(motoModel::class, 'nro_moto');
+    }
 }

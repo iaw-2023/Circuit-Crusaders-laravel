@@ -36,6 +36,10 @@
           @endforeach
       </select required>
   </div>
+  <div class="mb-3">
+    <label for="" class="form-label">Costo</label>
+    <input id="monto" name="monto" type="text" step="any" class="form-control" value="{{$moto->monto}}">
+  </div>
   <a href="{{ route('motos.index') }}" class="btn btn-secondary">Cancelar</a>
   <button type="submit" class="btn btn-primary">Guardar</button>
 </form>

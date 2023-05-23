@@ -40,6 +40,7 @@ class motoController extends Controller
         $motos->cilindrada = $request->get('cilindrada');
         $motos->patente = $request->get('patente');
         $motos->id_estilo = $request->get('id_estilo');
+        $motos->monto = $request->get('monto');
 
 
         $motos->save();
@@ -79,6 +80,7 @@ class motoController extends Controller
         $moto->cilindrada = $request->get('cilindrada');
         $moto->patente = $request->get('patente');
         $moto->id_estilo = $request->get('id_estilo');
+        $motos->monto = $request->get('monto');
 
 
         $moto->save();

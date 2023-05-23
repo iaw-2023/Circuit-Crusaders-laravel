@@ -16,6 +16,7 @@
           <th scope="col">Patente</th>
           <th scope="col">Estilo</th>
           <th scope="col">Acciones</th>
+          <th scope="col">Costo</th>
         </tr>
     </thead>
     <tbody>
@@ -27,6 +28,7 @@
             <td>{{$moto->anio}}</td>
             <td>{{$moto->cilindrada}}</td>
             <td>{{$moto->patente}}</td>
+            <td>${{$moto->monto}}</td>
             <td>{{$moto->estilo->nombre }}</td>
             <td>
                 
