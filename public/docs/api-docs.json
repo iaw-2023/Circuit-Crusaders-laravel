@@ -232,6 +232,10 @@
                     "type": "integer",
                     "description": "Identificador del pedido."
                   },
+                  "id_cliente": {
+                    "type": "integer",
+                    "description": "Identificador del cliente."
+                  },
                   "motos": {
                     "type": "array",
                     "items": {
@@ -240,10 +244,6 @@
                         "nro_moto": {
                           "type": "integer",
                           "description": "Identificador de la moto del pedido."
-                        },
-                        "monto": {
-                          "type": "double",
-                          "description": "Monto de las motos del pedido."
                         }
                       }
                     },

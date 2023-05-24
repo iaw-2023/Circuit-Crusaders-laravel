@@ -22,4 +22,4 @@ Route::get('/motos',[ApiController::class,'motos']);
 Route::get('/estilos',[ApiController::class,'estilos']);
 Route::get('/motos/estilos/{id_estilo}',[ApiController::class,'motosPorEstilo']);
 Route::get('/motos/marca/{marca}',[ApiController::class,'motosPorMarca']);
-//Route::post('/pedido',[ApiController::class,'pedido']);
+Route::post('/pedido',[ApiController::class,'pedido']);

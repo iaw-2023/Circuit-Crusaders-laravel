@@ -13,7 +13,7 @@ class motoModel extends Model
 
     public function estilo()
     {
-        return $this->belongsTo(estiloModel::class,'id_estilo');
+        return $this->belongsTo(estiloModel::class,'id_estilo', 'nro_estilo');
     }
 
 }

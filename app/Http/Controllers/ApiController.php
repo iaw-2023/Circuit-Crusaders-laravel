@@ -7,8 +7,8 @@ use App\Models\motoModel;
 use App\Models\estiloModel;
 use App\Models\clienteModel;
 use App\Models\pedidoModel;
+use App\Models\detalleModel;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\DB;
 
 use Illuminate\Http\Request;
 
@@ -40,29 +40,29 @@ class ApiController extends Controller
         return response()->json($motos);
     }
 
-    public function motosPorMarca (Request $request)
+    public function motosPorMarca(Request $request)
     {
-        $motos = DB:: table('motos')
-            ->join('estilos','motos.id_estilo','=','estilos.nro_estilo')
-            ->select('motos.nro_moto','estilos.nombre','motos.modelo', 'motos.cilindrada')
-            ->where('motos.marca',$request->marca)
+        $motos = motoModel::where('marca', $request->marca)
+            ->select('motos.nro_moto', 'motos.modelo', 'motos.cilindrada')
             ->get();
         return response()->json($motos);
     }
+
+
 
     public function pedido(Request $request)
     {
         $pedido = new pedidoModel();
         $pedido -> nro_pedido = $request->nro_pedido;
         $pedido -> fecha_pedido = now();
-        $pedido -> created_at = now();
-        $pedido -> update_at = now();
+        $pedido -> id_cliente = $request->id_cliente;
+
         $pedido -> save();
 
+        
         foreach($request->motos as $moto){
             $detalle= new detalleModel();
-            $detalle -> created_at = now();
-            $detalle -> update_at = now();           
+         
             $detalle -> id_pedido = $pedido->nro_pedido;
             $detalle -> id_moto = $moto["nro_moto"];
             $detalle-> save();

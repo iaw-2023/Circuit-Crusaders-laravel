@@ -21,7 +21,9 @@ Un cliente puede realizar un o varios pedidos, estos pedidos tendrán uno o vari
 - La información que puede ver el usuario son las diferentes motos con sus características todo esto categorizado con sus estilos. Además    de los datos de los pedidos que hace el como cliente.
 - Las acciones que se podrán realizar en la aplicación van a ser navegar entre las diferentes motos categorizadas por estilo y armar un pedido, lo que conlleva a seleccionar una o más motos, y solicitarlo. Además pedir reportes del pedido.
 
+## Link del deploy de vercel
+-https://circuit-crusaders-laravel-agusl1660.vercel.app/
 
-
-
+## Link del Swagger UI 
+-https://circuit-crusaders-laravel-agusl1660.vercel.app/rest/docs
 

@@ -24,10 +24,19 @@
       }
   ],
   "env": {
-      "APP_NAME": "Vercel Laravel IAW",
+      "APP_NAME": "Motomami",
       "APP_ENV": "production",
       "APP_DEBUG": "true",
 
+        "MAIL_MAILER":"smtp",
+        "MAIL_HOST":"smtp.office365.com",
+        "MAIL_PORT":"587",
+        "MAIL_USERNAME":"motosmotomami@outlook.com.ar",
+        "MAIL_PASSWORD":"motomami123",
+        "MAIL_ENCRYPTION":"tls",
+        "MAIL_FROM_ADDRESS":"motosmotomami@outlook.com.ar",
+
+        
       "VERCEL_DEMO_MODE": "true",
       "APP_CONFIG_CACHE": "/tmp/config.php",
       "APP_EVENTS_CACHE": "/tmp/events.php",

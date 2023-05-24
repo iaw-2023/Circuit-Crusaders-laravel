@@ -23,18 +23,18 @@
                 <img style="width: 50%;" src="https://i.ibb.co/W2Pmn2H/logomotomami.png" alt="Bootstrap">
             </div>
     
-            <ul class="navbar-nav">
+            <ul class="navbar-nav" >
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ url('/motos') }}">Motos</a>
+                    <a class="nav-link" style="color: white;" href="{{ url('/motos') }}">Motos</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ url('/estilos') }}">Estilos</a>
+                    <a class="nav-link" style="color: white;" href="{{ url('/estilos') }}">Estilos</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ url('/clientes') }}">Clientes</a>
+                    <a class="nav-link" style="color: white;" href="{{ url('/clientes') }}">Clientes</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ url('/pedidos') }}">Pedidos</a>
+                    <a class="nav-link" style="color: white;" href="{{ url('/pedidos') }}">Pedidos</a>
                 </li>
                 <li class="nav-item dropdown">
                     <a class="btn btn-dark dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
