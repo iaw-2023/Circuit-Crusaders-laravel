@@ -34,6 +34,7 @@ class ApiController extends Controller
 
     public function motosPorEstilo (Request $request)
     {
+
         $motos = motoModel::where('id_estilo', $request->id_estilo)->get();
 
         return response()->json($motos);
