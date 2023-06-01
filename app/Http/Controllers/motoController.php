@@ -33,19 +33,34 @@ class motoController extends Controller
      */
     public function store(Request $request)
     {
-        $motos= new motoModel();
-        $motos->marca = $request->get('marca');
-        $motos->modelo = $request->get('modelo');
-        $motos->anio = $request->get('anio');
-        $motos->cilindrada = $request->get('cilindrada');
-        $motos->patente = $request->get('patente');
-        $motos->id_estilo = $request->get('id_estilo');
-        $motos->monto = $request->get('monto');
+        try {
+            $validatedData = $request->validate([
+                'marca' => 'required|string',
+                'modelo' => 'required|string',
+                'anio' => 'required|integer',
+                'cilindrada' => 'required|string',
+                'patente' => 'required|string',
+                'id_estilo' => 'required|exists:estilos,nro_estilo',
+                'monto' => 'required|numeric',
+                'foto_url' => 'url'
+            ]);
+        } catch (ValidationException $e) {
+            return redirect()->back()->withErrors($e->validator)->withInput();
+        }
 
+        $motos = new motoModel();
+        $motos->marca = $validatedData['marca'];
+        $motos->modelo = $validatedData['modelo'];
+        $motos->anio = $validatedData['anio'];
+        $motos->cilindrada = $validatedData['cilindrada'];
+        $motos->patente = $validatedData['patente'];
+        $motos->id_estilo = $validatedData['id_estilo'];
+        $motos->monto = $validatedData['monto'];
+        $motos->foto_url = $validatedData['foto_url'];
 
         $motos->save();
-        return redirect('/motos');
 
+        return redirect('/motos');
     }
 
     /**
@@ -72,16 +87,31 @@ class motoController extends Controller
      */
     public function update(Request $request, $nro_moto)
     {
+        try {
+            $validatedData = $request->validate([
+                'marca' => 'required|string',
+                'modelo' => 'required|string',
+                'anio' => 'required|integer',
+                'cilindrada' => 'required|string',
+                'patente' => 'required|string',
+                'id_estilo' => 'required|exists:estilos,nro_estilo',
+                'monto' => 'required|numeric',
+                'foto_url' => 'url'
+            ]);
+        } catch (ValidationException $e) {
+            return redirect()->back()->withErrors($e->validator)->withInput();
+        }
+
         $moto = motoModel::find($nro_moto);
 
-        $moto->marca = $request->get('marca');
-        $moto->modelo = $request->get('modelo');
-        $moto->anio = $request->get('anio');
-        $moto->cilindrada = $request->get('cilindrada');
-        $moto->patente = $request->get('patente');
-        $moto->id_estilo = $request->get('id_estilo');
-        $moto->monto = $request->get('monto');
-
+        $moto->marca = $validatedData['marca'];
+        $moto->modelo = $validatedData['modelo'];
+        $moto->anio = $validatedData['anio'];
+        $moto->cilindrada = $validatedData['cilindrada'];
+        $moto->patente = $validatedData['patente'];
+        $moto->id_estilo = $validatedData['id_estilo'];
+        $moto->monto = $validatedData['monto'];
+        $moto->foto_url = $validatedData['foto_url'];
 
         $moto->save();
 

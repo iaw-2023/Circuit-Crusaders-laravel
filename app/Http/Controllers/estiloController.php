@@ -30,13 +30,22 @@ class estiloController extends Controller
      */
     public function store(Request $request)
     {
-        $estilos= new estiloModel();
-        $estilos->nombre = $request->get('nombre');
-        $estilos->descripcion = $request->get('descripcion');
-
+        try {
+            $validatedData = $request->validate([
+                'nombre' => 'required|string',
+                'descripcion' => 'required|string',
+            ]);
+        } catch (ValidationException $e) {
+            return redirect()->back()->withErrors($e->validator)->withInput();
+        }
+    
+        $estilos = new estiloModel();
+        $estilos->nombre = $validatedData['nombre'];
+        $estilos->descripcion = $validatedData['descripcion'];
+    
         $estilos->save();
+    
         return redirect('/estilos');
-
     }
 
     /**
@@ -62,13 +71,22 @@ class estiloController extends Controller
      */
     public function update(Request $request, $nro_estilo)
     {
+        try {
+            $validatedData = $request->validate([
+                'nombre' => 'required|string',
+                'descripcion' => 'required|string',
+            ]);
+        } catch (ValidationException $e) {
+            return redirect()->back()->withErrors($e->validator)->withInput();
+        }
+    
         $estilo = estiloModel::find($nro_estilo);
-
-        $estilo->nombre = $request->get('nombre');
-        $estilo->descripcion = $request->get('descripcion');
-        
+    
+        $estilo->nombre = $validatedData['nombre'];
+        $estilo->descripcion = $validatedData['descripcion'];
+    
         $estilo->save();
-
+    
         return redirect('estilos');
     }
 

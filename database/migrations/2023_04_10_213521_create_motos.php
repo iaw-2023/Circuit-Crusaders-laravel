@@ -23,7 +23,7 @@ return new class extends Migration
             $table->double('monto')->unsigned()->default(0);
 
             $table->foreign('id_estilo')->references('nro_estilo')->on('estilos')->onUpdate('cascade')->onDelete('cascade');
-
+            $table->string('foto_url');
         });
     }
 
