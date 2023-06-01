@@ -38,7 +38,12 @@
   </div>
   <div class="mb-3">
     <label for="" class="form-label">Costo</label>
-    <input id="monto" name="monto" type="number" min="0" step="0.01" class="form-control" tabindex="3" value="{{$moto->monto}} required>
+    <input id="monto" name="monto" type="number" min="0" step="0.01" class="form-control" tabindex="3" value="{{$moto->monto}}" required>
+  </div>
+  
+  <div class="mb-3">
+    <label for="" class="form-label">Imagen</label>
+    <input id="foto_url" name="foto_url" type="text" class="form-control" tabindex="1" value="{{$moto->foto_url}}"required>    
   </div>
   <a href="{{ route('motos.index') }}" class="btn btn-secondary">Cancelar</a>
   <button type="submit" class="btn btn-primary">Guardar</button>
