@@ -15,5 +15,9 @@ class motoModel extends Model
     {
         return $this->belongsTo(estiloModel::class,'id_estilo', 'nro_estilo');
     }
+    public function detalles()
+    {
+        return $this->hasMany(detalleModel::class,'nro_moto');
+    }
 
 }

@@ -34,17 +34,14 @@ class ApiController extends Controller
 
     public function motosPorEstilo (Request $request)
     {
-        $motos = motoModel:: where('id_estilo',$request->id_estilo)
-            ->select('motos.nro_moto','motos.marca','motos.modelo', 'motos.cilindrada')
-            ->get();
+        $motos = motoModel::where('id_estilo', $request->id_estilo)->get();
+
         return response()->json($motos);
     }
 
     public function motosPorMarca(Request $request)
     {
-        $motos = motoModel::where('marca', $request->marca)
-            ->select('motos.nro_moto', 'motos.modelo', 'motos.cilindrada')
-            ->get();
+        $motos = motoModel::where('marca', $request->marca)->get();
         return response()->json($motos);
     }
 
@@ -53,16 +50,18 @@ class ApiController extends Controller
     public function pedido(Request $request)
     {
         $pedido = new pedidoModel();
-        $pedido -> nro_pedido = $request->nro_pedido;
+
         $pedido -> fecha_pedido = now();
-        $pedido -> id_cliente = $request->id_cliente;
+
+        $email = $request->email;
+        $cliente = clienteModel::where('email', $email)->first();
+        $pedido->id_cliente = $cliente->nro_cliente;
 
         $pedido -> save();
 
         
         foreach($request->motos as $moto){
             $detalle= new detalleModel();
-         
             $detalle -> id_pedido = $pedido->nro_pedido;
             $detalle -> id_moto = $moto["nro_moto"];
             $detalle-> save();
