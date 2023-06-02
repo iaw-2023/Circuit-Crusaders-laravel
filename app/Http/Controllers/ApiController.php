@@ -9,7 +9,7 @@ use App\Models\clienteModel;
 use App\Models\pedidoModel;
 use App\Models\detalleModel;
 use Illuminate\Support\Facades\Hash;
-
+use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 
 class ApiController extends Controller
@@ -50,23 +50,36 @@ class ApiController extends Controller
 
     public function pedido(Request $request)
     {
-        $pedido = new pedidoModel();
+        if (clienteModel::where('email',$request->email)->exists()) {
+            DB::beginTransaction();
 
-        $pedido -> fecha_pedido = now();
+            $pedido = new pedidoModel();
 
-        $email = $request->email;
-        $cliente = clienteModel::where('email', $email)->first();
-        $pedido->id_cliente = $cliente->nro_cliente;
+            $pedido -> fecha_pedido = now();
 
-        $pedido -> save();
+            $email = $request->email;
+            $cliente = clienteModel::where('email', $email)->first();
+            $pedido->id_cliente = $cliente->nro_cliente;
 
-        
-        foreach($request->motos as $moto){
-            $detalle= new detalleModel();
-            $detalle -> id_pedido = $pedido->nro_pedido;
-            $detalle -> id_moto = $moto["nro_moto"];
-            $detalle-> save();
+            $pedido -> save();
+
+            foreach($request->motos as $moto){
+                if (motoModel::where('nro_moto',$moto["nro_moto"])->exists()) {
+                    $detalle= new detalleModel();
+                    $detalle -> id_pedido = $pedido->nro_pedido;
+                    $detalle -> id_moto = $moto["nro_moto"];
+                    $detalle-> save();
+                }
+                else {
+                    DB::rollBack();
+                    return response()->json("La moto no se encuentra en la base de datos.",500);
+                }
+            }
+            DB::commit();
+            return response()->json("El pedido fue registrado correctamente.",200);
+        }
+        else {
+            return response()->json("No existe el email ingresado.",500);
         }
     }
-
 }
