@@ -63,8 +63,16 @@
                         "description": "Patente de la moto."
                       },
                       "id_estilo": {
-                        "type": "string",
+                        "type": "number",
                         "description": "Estilo asociado a la moto."
+                      },
+                      "monto": {
+                        "type": "number",
+                        "description": "Monto de la moto."
+                      },
+                      "foto_url": {
+                        "type": "string",
+                        "description": "Foto asociada a la moto."
                       }
                     }
                   }
@@ -141,7 +149,7 @@
                     "properties": {
                       "nro_moto": {
                         "type": "integer",
-                        "description": "Identificador de la moto."
+                        "description": "Id de la moto."
                       },
                       "marca": {
                         "type": "string",
@@ -151,9 +159,29 @@
                         "type": "string",
                         "description": "Modelo de la moto."
                       },
+                      "anio": {
+                        "type": "integer",
+                        "description": "Año de fabricacion de la moto."
+                      },
                       "cilindrada": {
                         "type": "string",
                         "description": "Cilindrada de la moto."
+                      },
+                      "patente": {
+                        "type": "string",
+                        "description": "Patente de la moto."
+                      },
+                      "id_estilo": {
+                        "type": "number",
+                        "description": "Estilo asociado a la moto."
+                      },
+                      "monto": {
+                        "type": "number",
+                        "description": "Monto de la moto."
+                      },
+                      "foto_url": {
+                        "type": "string",
+                        "description": "Foto asociada a la moto."
                       }
                     }
                   }
@@ -193,19 +221,39 @@
                     "properties": {
                       "nro_moto": {
                         "type": "integer",
-                        "description": "Identificador de la moto."
+                        "description": "Id de la moto."
                       },
-                      "nombre": {
+                      "marca": {
                         "type": "string",
-                        "description": "Nombre del estilo de la moto."
+                        "description": "Marca de la moto."
                       },
                       "modelo": {
                         "type": "string",
                         "description": "Modelo de la moto."
                       },
+                      "anio": {
+                        "type": "integer",
+                        "description": "Año de fabricacion de la moto."
+                      },
                       "cilindrada": {
                         "type": "string",
                         "description": "Cilindrada de la moto."
+                      },
+                      "patente": {
+                        "type": "string",
+                        "description": "Patente de la moto."
+                      },
+                      "id_estilo": {
+                        "type": "number",
+                        "description": "Estilo asociado a la moto."
+                      },
+                      "monto": {
+                        "type": "number",
+                        "description": "Monto de la moto."
+                      },
+                      "foto_url": {
+                        "type": "string",
+                        "description": "Foto asociada a la moto."
                       }
                     }
                   }
@@ -228,13 +276,9 @@
               "schema": {
                 "type": "object",
                 "properties": {
-                  "nro_pedido": {
-                    "type": "integer",
-                    "description": "Identificador del pedido."
-                  },
-                  "id_cliente": {
-                    "type": "integer",
-                    "description": "Identificador del cliente."
+                  "email": {
+                    "type": "string",
+                    "description": "Email ingresado por el usuario."
                   },
                   "motos": {
                     "type": "array",
@@ -292,8 +336,16 @@
             "description": "Patente de la moto."
           },
           "id_estilo": {
-            "type": "string",
+            "type": "number",
             "description": "Estilo asociado a la moto."
+          },
+          "monto": {
+            "type": "number",
+            "description": "Monto de la moto."
+          },
+          "foto_url": {
+            "type": "string",
+            "description": "Foto asociada a la moto."
           }
         }
       },
