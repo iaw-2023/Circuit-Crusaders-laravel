@@ -1,10 +1,38 @@
-
-<nav x-data="{ open: false }" class="bg-white dark:bg-gray-800 border-b border-gray-100 dark:border-gray-700">
+<nav x-data="{ open: false }" class="navbar navbar-expand-lg navbar-dark bg-dark">
     <!-- Primary Navigation Menu -->
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex justify-between h-16">
-            <div class="flex">
-                
+            <div class="flex justify-start items-start">
+                <!-- Logo -->
+                <div class="navbar-brand">
+                    <img style="width: 50%;" src="https://i.ibb.co/W2Pmn2H/logomotomami.png" alt="Bootstrap">
+                </div>
+
+                <!-- Navigation Links -->
+                <ul class="navbar-nav" >
+                    <li class="nav-item">
+                        <a class="nav-link" style="color: white;" href="{{ url('/motos') }}">Motos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" style="color: white;" href="{{ url('/estilos') }}">Estilos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" style="color: white;" href="{{ url('/clientes') }}">Clientes</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" style="color: white;" href="{{ url('/pedidos') }}">Pedidos</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="btn btn-dark dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                          Reportes
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-dark">
+                          <li><a class="dropdown-item" href="{{route('reportePorCliente')}}">Reportes por clientes</a></li>
+                          <li><a class="dropdown-item" href="{{route('reportePorFecha')}}">Reportes por fechas</a></li>
+                        </ul>
+                      </li>
+                </ul>
+            </div>
 
             <!-- Settings Dropdown -->
             <div class="hidden sm:flex sm:items-center sm:ml-6">
@@ -22,6 +50,7 @@
                     </x-slot>
 
                     <x-slot name="content">
+                        
 
                         <!-- Authentication -->
                         <form method="POST" action="{{ route('logout') }}">
@@ -61,9 +90,7 @@
             </div>
 
             <div class="mt-3 space-y-1">
-                <x-responsive-nav-link :href="route('profile.edit')">
-                    {{ __('Profile') }}
-                </x-responsive-nav-link>
+               
 
                 <!-- Authentication -->
                 <form method="POST" action="{{ route('logout') }}">
