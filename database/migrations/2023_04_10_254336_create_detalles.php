@@ -15,11 +15,12 @@ return new class extends Migration
             $table->id('nro_detalle');
             $table->timestamps();
 
-            $table->double('monto');
-
             $table->unsignedBigInteger('id_pedido');
+            $table->unsignedBigInteger('id_moto');
+
 
             $table->foreign('id_pedido')->references('nro_pedido')->on('pedidos')->onUpdate('cascade')->onDelete('cascade');
+            $table->foreign('id_moto')->references('nro_moto')->on('motos')->onUpdate('cascade')->onDelete('cascade');
 
         });
     }

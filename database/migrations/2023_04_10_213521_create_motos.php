@@ -19,12 +19,11 @@ return new class extends Migration
             $table->integer('anio');
             $table->string('cilindrada');
             $table->string('patente');
-            $table->unsignedBigInteger('id_detalle');
             $table->unsignedBigInteger('id_estilo');
+            $table->double('monto')->unsigned()->default(0);
 
-            $table->foreign('id_detalle')->references('nro_detalle')->on('detalles')->onUpdate('cascade')->onDelete('cascade');
             $table->foreign('id_estilo')->references('nro_estilo')->on('estilos')->onUpdate('cascade')->onDelete('cascade');
-
+            $table->string('foto_url');
         });
     }
 
