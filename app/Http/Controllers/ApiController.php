@@ -79,7 +79,7 @@ class ApiController extends Controller
             return response()->json("El pedido fue registrado correctamente.",200);
         }
         else {
-            return response()->json("No existe el email ingresado.",500);
+            return response()->json("No existe el email ingresado.",404);
         }
     }
 
