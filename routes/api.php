@@ -25,3 +25,15 @@ Route::get('/motos/estilos/{id_estilo}',[ApiController::class,'motosPorEstilo'])
 
 Route::get('/motos/marca/{marca}',[ApiController::class,'motosPorMarca']);
 Route::post('/pedido',[ApiController::class,'pedido']);
+
+Route::post('register', [ApiController::class, 'register']);
+Route::post('login', [ApiController::class, 'login']);
+
+Route::group( ['middleware' => ["auth:sanctum"]], function(){
+    Route::get('user-profile', [ApiController::class, 'userProfile']);
+    Route::get('logout', [ApiController::class, 'logout']);
+});
+
+Route::middleware('auth:sanctum')->get('/cliente', function (Request $request) {
+    return $request->cliente();
+});

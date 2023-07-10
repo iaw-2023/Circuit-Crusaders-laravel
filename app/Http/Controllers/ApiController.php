@@ -82,4 +82,76 @@ class ApiController extends Controller
             return response()->json("No existe el email ingresado.",500);
         }
     }
+
+    /*AUTENTICACIÓN*/
+    public function register(Request $request) {
+        $request->validate([
+            'name' => 'required',
+            'email' => 'required|email|unique:clientes',
+            'password' => 'required|confirmed'            
+        ]);
+
+        $cliente = new clienteModel();
+        $cliente->name = $request->name;
+        $cliente->email = $request->email;
+        $cliente->password = $request->password;
+        $cliente->save();
+
+        return response()->json([
+            "status" => 200,
+            "msg" => "¡Registro de usuario exitoso!",
+        ]);    
+    }
+
+
+    public function login(Request $request) {
+
+        $request->validate([
+            "email" => "required|email",
+            "password" => "required"
+        ]);
+
+        $cliente = clienteModel::where("email", "=", $request->email)->first();
+
+        if( isset($cliente->nro_cliente) ){
+            if($request->password === $cliente->password){
+                //creamos el token
+                $token = $cliente->createToken("auth_token")->plainTextToken;
+                //si está todo ok
+                return response()->json([
+                    "status" => 200,
+                    "msg" => "¡Usuario logueado exitosamente!",
+                    "access_token" => $token
+                ]);        
+            }else{
+                return response()->json([
+                    "status" => 0,
+                    "msg" => "La password es incorrecta",
+                ], 404);    
+            }
+
+        }else{
+            return response()->json([
+                "status" => 0,
+                "msg" => "Usuario no registrado",
+            ], 404);  
+        }
+    }
+
+    public function userProfile() {
+        return response()->json([
+            "status" => 0,
+            "msg" => "Acerca del perfil de usuario",
+            "data" => auth()->cliente()
+        ]); 
+    }
+
+    public function logout() {
+        auth()->cliente()->tokens()->delete();
+        
+        return response()->json([
+            "status" => 1,
+            "msg" => "Cierre de Sesión",            
+        ]); 
+    }
 }
