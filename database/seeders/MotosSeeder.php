@@ -12,6 +12,9 @@ class MotosSeeder extends Seeder
      */
     public function run(): void
     {
+        $image = file_get_contents('public/seed_images/street/fz.jpg');
+        $image = base64_encode($image);
+
         DB::table('motos')->insert([
             'marca' => 'YAMAHA',
             'modelo' => 'FZ',
@@ -20,8 +23,11 @@ class MotosSeeder extends Seeder
             'patente' => 'A 897 AAA',
             'id_estilo' => '1',
             'monto' => '1150000',
-            'foto_url' => 'https://www.deruedas.com.ar/images/vehiculos/5354_im.jpg',
+            'foto' => $image
         ]);
+
+        $image = file_get_contents('public/seed_images/street/GSX-S750.jpeg');
+        $image = base64_encode($image);
 
         DB::table('motos')->insert([
             'marca' => 'SUZUKI',
@@ -31,9 +37,11 @@ class MotosSeeder extends Seeder
             'patente' => 'B 123 CCC',
             'id_estilo' => '1',
             'monto' => '750000',
-            'foto_url' => 'https://motoblog.com/wp-content/uploads/2022/09/Suzuki-GSX-S750-16.jpeg',
+            'foto' => $image
         ]);
 
+        $image = file_get_contents('public/seed_images/sport/CBR600.webp');
+        $image = base64_encode($image);
         DB::table('motos')->insert([
             'marca' => 'HONDA',
             'modelo' => 'CBR600RR',
@@ -42,9 +50,11 @@ class MotosSeeder extends Seeder
             'patente' => 'C 456 DDD',
             'id_estilo' => '7',
             'monto' => '850000',
-            'foto_url' => 'https://lamoto.com.ar/wp-content/uploads/2020/08/HONDA-CBR600-2.jpeg',
+            'foto' => $image
         ]);
 
+        $image = file_get_contents('public/seed_images/off-road/himalayan.jpg');
+        $image = base64_encode($image);
         DB::table('motos')->insert([
             'marca' => 'ROYAL ENFIELD',
             'modelo' => 'Himalayan',
@@ -53,8 +63,10 @@ class MotosSeeder extends Seeder
             'patente' => 'D 789 EEE',
             'id_estilo' => '8',
             'monto' => '600000',
-            'foto_url' => 'https://royalenfieldar.com/wp-content/uploads/2022/08/AL55396-1.jpg',
+            'foto' => $image
         ]);
+        $image = file_get_contents('public/seed_images/sport/ninja650.jpg');
+        $image = base64_encode($image);
 
         DB::table('motos')->insert([
             'marca' => 'KAWASAKI',
@@ -64,9 +76,11 @@ class MotosSeeder extends Seeder
             'patente' => 'E 012 FFF',
             'id_estilo' => '7',
             'monto' => '700000',
-            'foto_url' => 'https://www.formulamoto.es/wp-content/uploads/2021/05/prueba-kawasaki-ninja-40g-1200x800.jpg',
+            'foto' => $image
         ]);
 
+        $image = file_get_contents('public/seed_images/brat/duke390.jpg');
+        $image = base64_encode($image);
         DB::table('motos')->insert([
             'marca' => 'KTM',
             'modelo' => 'Duke 390',
@@ -75,9 +89,10 @@ class MotosSeeder extends Seeder
             'patente' => 'F 345 GGG',
             'id_estilo' => '4',
             'monto' => '650000',
-            'foto_url' => 'https://lamoto.com.ar/wp-content/uploads/2023/05/KTM-390-Duke-Cafe-Racer-lateral.jpg',
+            'foto' => $image
         ]);
-
+        $image = file_get_contents('public/seed_images/sport/S1000RR.jpg');
+        $image = base64_encode($image);
         DB::table('motos')->insert([
             'marca' => 'BMW',
             'modelo' => 'S1000RR',
@@ -86,9 +101,10 @@ class MotosSeeder extends Seeder
             'patente' => 'G 678 HHH',
             'id_estilo' => '7',
             'monto' => '900000',
-            'foto_url' => 'https://lamoto.com.ar/wp-content/uploads/2022/09/BMW-S1000-RR-2023-lateral.jpg',
+            'foto' => $image
         ]);
-
+        $image = file_get_contents('public/seed_images/off-road/tripleRS.jpg');
+        $image = base64_encode($image);
         DB::table('motos')->insert([
             'marca' => 'TRIUMPH',
             'modelo' => 'Street Triple RS',
@@ -97,9 +113,10 @@ class MotosSeeder extends Seeder
             'patente' => 'H 901 III',
             'id_estilo' => '8',
             'monto' => '950000',
-            'foto_url' => 'https://lamoto.com.ar/wp-content/uploads/2022/11/Triumph-Street-Triple-2023-RS-1.jpg',
+            'foto' => $image
         ]);
-
+        $image = file_get_contents('public/seed_images/off-road/tiger1200.webp');
+        $image = base64_encode($image);
         DB::table('motos')->insert([
             'marca' => 'TRIUMPH',
             'modelo' => 'Tiger 1200 Rally',
@@ -108,9 +125,10 @@ class MotosSeeder extends Seeder
             'patente' => 'J 234 JJJ',
             'id_estilo' => '8',
             'monto' => '1200000',
-            'foto_url' => 'https://i0.wp.com/gripriders.com/wp-content/uploads/2022/03/Tiger-1200-2022-FAMILY-1.jpeg?ssl=1',
+            'foto' => $image
         ]);
-
+        $image = file_get_contents('public/seed_images/brat/fortytwo.jpg');
+        $image = base64_encode($image);
         DB::table('motos')->insert([
             'marca' => 'JAWA',
             'modelo' => 'Forty Two',
@@ -119,9 +137,10 @@ class MotosSeeder extends Seeder
             'patente' => 'K 567 KKK',
             'id_estilo' => '4',
             'monto' => '400000',
-            'foto_url' => 'https://cdni.autocarindia.com/Utils/ImageResizer.ashx?n=https://cdni.autocarindia.com/Reviews/2021-Jawa-Forty-Two-side.jpg&c=0',
+            'foto' => $image
         ]);
-
+        $image = file_get_contents('public/seed_images/sport/f3.jpg');
+        $image = base64_encode($image);
         DB::table('motos')->insert([
             'marca' => 'MV AGUSTA',
             'modelo' => 'F3 800',
@@ -130,9 +149,10 @@ class MotosSeeder extends Seeder
             'patente' => 'L 890 LLL',
             'id_estilo' => '7',
             'monto' => '1100000',
-            'foto_url' => 'https://cdp.azureedge.net/products-private/prod/824d9872-d284-4e06-bcdb-ce44f3d190ec/fccc0674-afed-4072-922d-a7fc00cdd653/00000000-0000-0000-0000-000000000000/db56192f-97d3-4254-ae2c-ab4f007c4e75/6db8d22a-3ac5-445e-b7a6-ad0201406769/6000000001.jpg',
+            'foto' => $image
         ]);
-
+        $image = file_get_contents('public/seed_images/sport_touring/RSV4.webp');
+        $image = base64_encode($image);
         DB::table('motos')->insert([
             'marca' => 'APRILIA',
             'modelo' => 'RSV4',
@@ -141,8 +161,10 @@ class MotosSeeder extends Seeder
             'patente' => 'M 123 MMM',
             'id_estilo' => '12',
             'monto' => '1050000',
-            'foto_url' => 'https://motos.espirituracer.com/archivos/2021/08/yamaha-fjr-1300as-2014-4.webp',
+            'foto' => $image
         ]);
+        $image = file_get_contents('public/seed_images/street/MT-07.jpg');
+        $image = base64_encode($image);
 
         DB::table('motos')->insert([
             'marca' => 'YAMAHA',
@@ -152,9 +174,10 @@ class MotosSeeder extends Seeder
             'patente' => 'N 456 NNN',
             'id_estilo' => '1',
             'monto' => '550000',
-            'foto_url' => 'https://i.ytimg.com/vi/Hi04Mt0VFAo/maxresdefault.jpg',
+            'foto' => $image
         ]);
-
+        $image = file_get_contents('public/seed_images/off-road/V-Strom650.jpg');
+        $image = base64_encode($image);
         DB::table('motos')->insert([
             'marca' => 'SUZUKI',
             'modelo' => 'V-Strom 650',
@@ -163,9 +186,10 @@ class MotosSeeder extends Seeder
             'patente' => 'P 789 PPP',
             'id_estilo' => '8',
             'monto' => '500000',
-            'foto_url' => 'https://999motos.com.ar/wp-content/uploads/2022/06/DL650XAM1_action06-768x512-1.jpg',
+            'foto' => $image
         ]);
-
+        $image = file_get_contents('public/seed_images/off-road/CB500X.jpg');
+        $image = base64_encode($image);
         DB::table('motos')->insert([
             'marca' => 'HONDA',
             'modelo' => 'CB500X',
@@ -174,9 +198,10 @@ class MotosSeeder extends Seeder
             'patente' => 'R 012 RRR',
             'id_estilo' => '8',
             'monto' => '520000',
-            'foto_url' => 'https://www.hondamotovalencia.es/wp-content/uploads/2021/09/HONDA_CB500X-5-2.jpg',
+            'foto' => $image
         ]);
-
+        $image = file_get_contents('public/seed_images/brat/Classic350.webp');
+        $image = base64_encode($image);
         DB::table('motos')->insert([
             'marca' => 'ROYAL ENFIELD',
             'modelo' => 'Classic 350',
@@ -185,9 +210,10 @@ class MotosSeeder extends Seeder
             'patente' => 'S 345 SSS',
             'id_estilo' => '4',
             'monto' => '470000',
-            'foto_url' => 'https://cdn.motor1.com/images/mgl/6ZKNME/s3/royal-enfield-argentina-lanzo-la-classic-350-en-autoclasica-2022.webp',
+            'foto' => $image
         ]);
-
+        $image = file_get_contents('public/seed_images/brat/Z900.jpg');
+        $image = base64_encode($image);
         DB::table('motos')->insert([
             'marca' => 'KAWASAKI',
             'modelo' => 'Z900',
@@ -196,9 +222,11 @@ class MotosSeeder extends Seeder
             'patente' => 'T 678 TTT',
             'id_estilo' => '4',
             'monto' => '650000',
-            'foto_url' => 'https://caferacerpasion.com/wp-content/uploads/2015/09/triumph-bonneville-brat-style-vida-bandida-motocicletas-1.jpg',
+            'foto' => $image
         ]);
 
+        $image = file_get_contents('public/seed_images/tracker/YZF-R6.jpg');
+        $image = base64_encode($image);
         DB::table('motos')->insert([
             'marca' => 'YAMAHA',
             'modelo' => 'YZF-R6',
@@ -207,9 +235,10 @@ class MotosSeeder extends Seeder
             'patente' => 'U 901 UUU',
             'id_estilo' => '6',
             'monto' => '720000',
-            'foto_url' => 'https://donkeymotorbikes.com/wp-content/uploads/2021/10/Yamaha-Virago-Street-Tracker.jpg',
+            'foto' => $image
         ]);
-
+        $image = file_get_contents('public/seed_images/cafe_racer/RC390.jpg');
+        $image = base64_encode($image);
         DB::table('motos')->insert([
             'marca' => 'KTM',
             'modelo' => 'RC 390',
@@ -218,9 +247,10 @@ class MotosSeeder extends Seeder
             'patente' => 'V 234 VVV',
             'id_estilo' => '3',
             'monto' => '480000',
-            'foto_url' => 'https://www.motouutiset.fi/get_img?ImageId=27161&ImageWidth=957&ImageHeight=718',
+            'foto' => $image
         ]);
-
+        $image = file_get_contents('public/seed_images/scooter/Agility.avif');
+        $image = base64_encode($image);
         DB::table('motos')->insert([
             'marca' => 'KYMCO',
             'modelo' => 'Agility',
@@ -229,9 +259,10 @@ class MotosSeeder extends Seeder
             'patente' => 'Y 012 YYY',
             'id_estilo' => '10',
             'monto' => '850000',
-            'foto_url' => 'https://img.freepik.com/fotos-premium/moto-scooter-retro-calle-estilo-urbano_613910-15469.jpg',
+            'foto' => $image
         ]);
-
+        $image = file_get_contents('public/seed_images/tracker/BonnevilleT120.jpg');
+        $image = base64_encode($image);
         DB::table('motos')->insert([
             'marca' => 'TRIUMPH',
             'modelo' => 'Bonneville T120',
@@ -240,9 +271,10 @@ class MotosSeeder extends Seeder
             'patente' => 'X 890 XXX',
             'id_estilo' => '6',
             'monto' => '980000',
-            'foto_url' => 'https://motos0km.com.ar/models/triumph-bonneville-t120-black-gallery-120181121173624.jpg',
+            'foto' => $image
         ]);
-
+        $image = file_get_contents('public/seed_images/touring/StreetGlide.jpg');
+        $image = base64_encode($image);
         DB::table('motos')->insert([
             'marca' => 'HARLEY-DAVIDSON',
             'modelo' => 'Street Glide',
@@ -251,7 +283,7 @@ class MotosSeeder extends Seeder
             'patente' => 'W 567 WWW',
             'id_estilo' => '9',
             'monto' => '1300000',
-            'foto_url' => 'https://fotos.perfil.com/2019/04/03/trim/1280/720/harley-davidson-street-glide-special-655646.jpg',
+            'foto' => $image
         ]);        
     }
 }

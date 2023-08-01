@@ -5,7 +5,7 @@
 @section('content')
 <h2>EDITAR REGISTROS</h2>
 
-<form action="{{ route('motos.update', $moto->nro_moto) }}" method="POST">
+<form action="{{ route('motos.update', $moto->nro_moto) }}" method="POST" enctype="multipart/form-data">
     @csrf    
     @method('PUT')
   <div class="mb-3">
@@ -42,9 +42,10 @@
   </div>
   
   <div class="mb-3">
-    <label for="" class="form-label">Imagen</label>
-    <input id="foto_url" name="foto_url" type="text" class="form-control" tabindex="1" value="{{$moto->foto_url}}"required>    
-  </div>
+    <label for="">Imagen</label>
+    <input type="file" class="form-control" id="foto" name="foto" required>            
+</div>
+
   <a href="{{ route('motos.index') }}" class="btn btn-secondary">Cancelar</a>
   <button type="submit" class="btn btn-primary">Guardar</button>
 </form>

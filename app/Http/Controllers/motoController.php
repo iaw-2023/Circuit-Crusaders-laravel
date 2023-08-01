@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\motoModel;
 use App\Models\estiloModel;
+use Illuminate\Validation\ValidationException;
 
 use Illuminate\Http\Request;
 
@@ -42,7 +43,7 @@ class motoController extends Controller
                 'patente' => 'required|string',
                 'id_estilo' => 'required|exists:estilos,nro_estilo',
                 'monto' => 'required|numeric',
-                'foto_url' => 'url'
+                'foto' => 'required|image'
             ]);
         } catch (ValidationException $e) {
             return redirect()->back()->withErrors($e->validator)->withInput();
@@ -56,7 +57,10 @@ class motoController extends Controller
         $motos->patente = $validatedData['patente'];
         $motos->id_estilo = $validatedData['id_estilo'];
         $motos->monto = $validatedData['monto'];
-        $motos->foto_url = $validatedData['foto_url'];
+
+        $imagen = $request->file('foto');
+        $base64Image = base64_encode(file_get_contents($imagen->getRealPath()));//codifica la imagen en base64
+        $motos->foto = $base64Image;      
 
         $motos->save();
 
@@ -96,7 +100,7 @@ class motoController extends Controller
                 'patente' => 'required|string',
                 'id_estilo' => 'required|exists:estilos,nro_estilo',
                 'monto' => 'required|numeric',
-                'foto_url' => 'url'
+                'foto' => 'required|image'
             ]);
         } catch (ValidationException $e) {
             return redirect()->back()->withErrors($e->validator)->withInput();
@@ -111,7 +115,14 @@ class motoController extends Controller
         $moto->patente = $validatedData['patente'];
         $moto->id_estilo = $validatedData['id_estilo'];
         $moto->monto = $validatedData['monto'];
-        $moto->foto_url = $validatedData['foto_url'];
+
+        if ($request->hasFile('foto')) {
+            $imagen = $request->file('foto');
+            $base64Image = base64_encode(file_get_contents($imagen->getRealPath()));//codifica la imagen en base64
+            $motos->foto = $base64Image; 
+        }
+        
+        
 
         $moto->save();
 
