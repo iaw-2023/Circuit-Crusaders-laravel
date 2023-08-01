@@ -46,42 +46,39 @@ class ApiController extends Controller
         return response()->json($motos);
     }
 
-
-
     public function pedido(Request $request)
     {
-        if (clienteModel::where('email',$request->email)->exists()) {
-            DB::beginTransaction();
+        $user = auth()->user();
 
-            $pedido = new pedidoModel();
+        if (!$user) {
+            return response()->json("Usuario no autenticado.", 401);
+        }
 
-            $pedido -> fecha_pedido = now();
+        DB::beginTransaction();
 
-            $email = $request->email;
-            $cliente = clienteModel::where('email', $email)->first();
-            $pedido->id_cliente = $cliente->nro_cliente;
+        $pedido = new pedidoModel();
 
-            $pedido -> save();
+        $pedido->fecha_pedido = now();
+        $pedido->id_cliente = $user->nro_cliente;
 
-            foreach($request->motos as $moto){
-                if (motoModel::where('nro_moto',$moto["nro_moto"])->exists()) {
-                    $detalle= new detalleModel();
-                    $detalle -> id_pedido = $pedido->nro_pedido;
-                    $detalle -> id_moto = $moto["nro_moto"];
-                    $detalle-> save();
-                }
-                else {
-                    DB::rollBack();
-                    return response()->json("La moto no se encuentra en la base de datos.",500);
-                }
+        $pedido->save();
+
+        foreach ($request->motos as $moto) {
+            if (motoModel::where('nro_moto', $moto["nro_moto"])->exists()) {
+                $detalle = new detalleModel();
+                $detalle->id_pedido = $pedido->nro_pedido;
+                $detalle->id_moto = $moto["nro_moto"];
+                $detalle->save();
+            } else {
+                DB::rollBack();
+                return response()->json("La moto no se encuentra en la base de datos.", 500);
             }
-            DB::commit();
-            return response()->json("El pedido fue registrado correctamente.",200);
         }
-        else {
-            return response()->json("No existe el email ingresado.",404);
-        }
+
+        DB::commit();
+        return response()->json("El pedido fue registrado correctamente.", 200);
     }
+
 
     /*AUTENTICACIÓN*/
     public function register(Request $request) {
@@ -90,16 +87,19 @@ class ApiController extends Controller
             'email' => 'required|email|unique:clientes',
             'password' => 'required|confirmed'            
         ]);
-
+    
         $cliente = new clienteModel();
         $cliente->name = $request->name;
         $cliente->email = $request->email;
-        $cliente->password = $request->password;
+        $cliente->password = bcrypt($request->password); // Hash de la contraseña
         $cliente->save();
-
+    
+        $token = $cliente->createToken('auth_token')->plainTextToken;
+    
         return response()->json([
             "status" => 200,
             "msg" => "¡Registro de usuario exitoso!",
+            "access_token" => $token,
         ]);    
     }
 
@@ -114,7 +114,7 @@ class ApiController extends Controller
         $cliente = clienteModel::where("email", "=", $request->email)->first();
 
         if( isset($cliente->nro_cliente) ){
-            if($request->password === $cliente->password){
+            if(Hash::check($request->password, $cliente->password)||($request->password === $cliente->password)){
                 //creamos el token
                 $token = $cliente->createToken("auth_token")->plainTextToken;
                 //si está todo ok
@@ -142,7 +142,7 @@ class ApiController extends Controller
         return response()->json([
             "status" => 0,
             "msg" => "Acerca del perfil de usuario",
-            "data" => auth()->cliente()
+            "data" => auth()->user()
         ]); 
     }
 
@@ -154,4 +154,39 @@ class ApiController extends Controller
             "msg" => "Cierre de Sesión",            
         ]); 
     }
+
+    public function getOrderHistory() {
+        $cliente = clienteModel::where("email", "=", auth()->user()->email)->first();
+            
+        $pedidos = pedidoModel::where("id_cliente", "=", $cliente->nro_cliente)->get();
+        
+        $historialPedidos = [];
+        
+        foreach($pedidos as $pedido) {
+            $detalle = detalleModel::where("id_pedido", "=", $pedido->nro_pedido)->get(); // Usar get() en lugar de first()
+            
+            foreach ($detalle as $detalleItem) { // Recorrer los detalles y agregar cada moto al arreglo
+                $moto = motoModel::find($detalleItem->id_moto);
+    
+                $historialPedidos[] = [
+                    "fecha_pedido" => $pedido->fecha_pedido,
+                    "moto" => [
+                        "marca" => $moto->marca,
+                        "modelo" => $moto->modelo,
+                        "anio" => $moto->anio,
+                        "cilindrada" => $moto->cilindrada,
+                        "monto" => $moto->monto,
+                        "foto_url" => $moto->foto_url
+                    ]
+                ];
+            }
+        }
+    
+        return response()->json([
+            "status" => 0,
+            "msg" => "Historial de pedidos y detalles del cliente",
+            "data" => $historialPedidos
+        ]);
+    }
+     
 }
