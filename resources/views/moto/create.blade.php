@@ -4,7 +4,7 @@
 @section('content')
 
     <h1>Agregar moto</h1>
-    <form action="{{ route('motos.store') }}" method="POST">
+    <form action="{{ route('motos.store') }}" method="POST" enctype="multipart/form-data">
         @csrf
       <div class="mb-3">
         <label for="" class="form-label">Marca</label>
@@ -60,8 +60,8 @@
         <input id="monto" name="monto" type="number" min="0" step="0.01" class="form-control" tabindex="3" required>
       </div>
       <div class="mb-3">
-        <label for="" class="form-label">Imagen</label>
-        <input id="foto_url" name="foto_url" type="text" class="form-control" tabindex="1" required>    
+          <label for="">Imagen</label>
+          <input type="file" class="form-control" id="foto" name="foto" required>            
       </div>
 
       <a href="{{ route('motos.index') }}" class="btn btn-secondary" tabindex="5">Cancelar</a>
