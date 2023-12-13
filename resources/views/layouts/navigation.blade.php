@@ -31,6 +31,12 @@
                           <li><a class="dropdown-item" href="{{route('reportePorFecha')}}">Reportes por fechas</a></li>
                         </ul>
                       </li>
+                    {{-- Verifica si el usuario tiene el rol 'admin' --}}
+                    @if(auth()->check() && auth()->user()->rol == 'admin')
+                    <li class="nav-item">
+                        <a class="nav-link" style="color: white;" href="{{ url('/users') }}">Administrar empleados</a>
+                    </li>
+                    @endif
                 </ul>
             </div>
 

@@ -34,6 +34,15 @@ Route::middleware('auth')->group(function () {
 });
 
 Route::middleware('auth')->group(function () {
+    Route::get('users',[ProfileController::class,'index'])->name('users.index');
+    Route::get('users/create',[ProfileController::class,'create'])->name('users.create');
+    Route::get('users/edit/{id}', [ProfileController::class,'edit'])->name('users.edit');
+    Route::put('users/{id}', [ProfileController::class,'update'])->name('users.update');
+    Route::post('users', [ProfileController::class,'store'])->name('users.store');
+    Route::delete('users/{id}', [ProfileController::class,'destroy'])->name('users.destroy');
+});
+
+Route::middleware('auth')->group(function () {
     Route::get('motos',[motoController::class,'index'])->name('motos.index');
     Route::get('motos/create',[motoController::class,'create'])->name('motos.create');
     Route::get('motos/edit/{nro_moto}', [motoController::class,'edit'])->name('motos.edit');
@@ -51,11 +60,14 @@ Route::middleware('auth')->group(function () {
     Route::delete('estilos/{nro_estilo}', [estiloController::class,'destroy'])->name('estilos.destroy');
 });
 
+/*
+
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
+*/
 
 Route::middleware('auth')->group(function () {
     Route::get('pedidos',[pedidoController::class,'index'])->name('pedidos.index');

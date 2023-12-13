@@ -11,11 +11,15 @@ return new class extends Migration
      */
     public function up(): void
     {
+         /** Administrador: Hacer todo lo que se puede, crear empleados, ver su informacion y eliminarlos.
+            * Empleados: Hacer todo lo que se puede.
+        */
         Schema::create('users', function (Blueprint $table) {
             $table->id();
             $table->string('name');
             $table->string('email')->unique();
             $table->string('password');
+            $table->string('rol');
         });
     }
 
