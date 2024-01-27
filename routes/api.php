@@ -31,6 +31,7 @@ Route::post('login', [ApiController::class, 'login']);
 
 Route::group( ['middleware' => ["auth:sanctum"]], function(){
     Route::post('/pedido',[ApiController::class,'pedido']);
+    Route::post('/sendConfirmationMail',[ApiController::class,'sendConfirmationMail']);
     Route::get('user-profile', [ApiController::class, 'userProfile']);
     Route::get('logout', [ApiController::class, 'logout']);
     Route::get('historial', [ApiController::class, 'getOrderHistory']);

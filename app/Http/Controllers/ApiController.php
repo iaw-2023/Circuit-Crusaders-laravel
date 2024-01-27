@@ -11,6 +11,7 @@ use App\Models\detalleModel;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
+use MailerSend\MailerSend;
 
 class ApiController extends Controller
 {
@@ -220,5 +221,48 @@ class ApiController extends Controller
     
         return response()->json($response);
     }
-     
+ 
+    /*MAIL CONFIRMACIÓN DE PEDIDO*/
+    public function sendConfirmationMail(Request $request)
+    {
+        $user = auth()->user();
+
+        if (!$user) {
+            return response()->json("Usuario no autenticado.", 401);
+        }
+    
+        // Obtener el pedido más reciente del usuario
+        $latestPedido = pedidoModel::where('id_cliente', $user->nro_cliente)
+            ->orderBy('fecha_pedido', 'desc')
+            ->first();
+    
+        // Verificar si se encontró un pedido
+        if (!$latestPedido) {
+            return response()->json("No se encontró ningún pedido para el usuario.", 404);
+        }
+    
+        $detalles = detalleModel::where('id_pedido', $latestPedido->nro_pedido)
+            ->with('moto') 
+            ->get();
+
+        $messageBody = $user->nombre . ":\n    Se le informa que su pedido se ha realizado con éxito. Usted compró:\n";
+    
+        foreach ($detalles as $detalle) {
+            $messageBody .= " - Moto #" . $detalle->moto->marca . " " . $detalle->moto->modelo . " (" . $detalle->moto->estilo->nombre . ")  con un costo de " . $detalle->moto->monto ."\n";
+        }
+    
+        $messageBody .= "Muchas gracias por su compra.";
+    
+        // Enviar el correo electrónico
+        $mailerSend = new MailerSend(config('mailersend.api_key'));
+        $mailerSend->send([
+            'from' => ['email' => 'motomami066@gmail.com', 'name' => 'MotoMami'],
+            'to' => [['email' => $user->email, 'name' => $user->nombre]],
+            'subject' => 'Confirmación de Pedido',
+            'text' => $messageBody,
+        ]);
+    
+        return response()->json("Correo electrónico de confirmación enviado correctamente.", 200);
+    }
+
 }

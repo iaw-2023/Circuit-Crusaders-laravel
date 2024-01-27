@@ -121,4 +121,8 @@ return [
         ],
     ],
 
+    'mailersend' => [
+        'transport' => 'mailersend',
+    ],
+
 ];
