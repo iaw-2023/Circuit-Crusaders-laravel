@@ -31,6 +31,7 @@ Route::post('login', [ApiController::class, 'login']);
 
 Route::group( ['middleware' => ["auth:sanctum"]], function(){
     Route::post('/pedido',[ApiController::class,'pedido']);
+    Route::post('/process_payment',[ApiController::class,'mercadoPago']);
     Route::post('/sendConfirmationMail',[ApiController::class,'sendConfirmationMail']);
     Route::get('user-profile', [ApiController::class, 'userProfile']);
     Route::get('logout', [ApiController::class, 'logout']);

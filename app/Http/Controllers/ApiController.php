@@ -77,6 +77,18 @@ class ApiController extends Controller
         }
 
         DB::commit();
+
+        $messageBody = "Muchas gracias por su compra.";
+    
+        // Enviar el correo electrónico
+        $mailerSend = new MailerSend(env('MAILERSEND_API_KEY'));
+        $mailerSend->send([
+            'from' => ['email' => 'motomami066@gmail.com', 'name' => 'MotoMami'],
+            'to' => [['email' => $user->email, 'name' => $user->nombre]],
+            'subject' => 'Confirmación de Pedido',
+            'text' => $messageBody,
+        ]);
+        
         return response()->json("El pedido fue registrado correctamente.", 200);
     }
 
