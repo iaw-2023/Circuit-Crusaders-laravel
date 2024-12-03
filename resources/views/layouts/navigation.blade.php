@@ -4,7 +4,7 @@
         <div class="d-lg-flex justify-content-between align-items-center flex-column flex-md-row">
             <!-- Logo -->
             <div class="navbar-brand mb-3 mb-md-0">
-                <img src="https://i.ibb.co/W2Pmn2H/logomotomami.png" alt="Logo">
+                <img src="https://i.ibb.co/yV7W6Td/logomotomami.png" alt="Logo">
             </div>
 
             <!-- Navigation Links -->

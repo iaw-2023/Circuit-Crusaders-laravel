@@ -5,7 +5,7 @@
             <div class="flex justify-start items-start">
                 <!-- Logo -->
                 <div class="navbar-brand">
-                    <img style="width: 50%;" src="https://i.ibb.co/W2Pmn2H/logomotomami.png" alt="Bootstrap">
+                    <img style="width: 50%;" src="https://i.ibb.co/yV7W6Td/logomotomami.png" alt="Bootstrap">
                 </div>
 
                 <!-- Navigation Links -->

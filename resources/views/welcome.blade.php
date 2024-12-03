@@ -17,7 +17,7 @@
     </head>
     <body style="background:#ffb727" class="antialiased">
         <div style="display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100vh;">
-        <img style="width: 50%;" src="https://i.ibb.co/W2Pmn2H/logomotomami.png" alt="Bootstrap">            
+        <img style="width: 50%;" src="https://i.ibb.co/yV7W6Td/logomotomami.png" alt="Bootstrap">            
 
         @if (Route::has('login'))
         <div style="display: flex; flex-direction: column; align-items: center; justify-content: center;">
