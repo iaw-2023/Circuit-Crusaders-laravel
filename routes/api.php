@@ -28,10 +28,10 @@ Route::get('/motos/marca/{marca}',[ApiController::class,'motosPorMarca']);
 
 Route::post('register', [ApiController::class, 'register']);
 Route::post('login', [ApiController::class, 'login']);
+Route::post('/process_payment',[ApiController::class,'mercadoPago']);
 
 Route::group( ['middleware' => ["auth:sanctum"]], function(){
     Route::post('/pedido',[ApiController::class,'pedido']);
-    Route::post('/process_payment',[ApiController::class,'mercadoPago']);
     Route::post('/sendConfirmationMail',[ApiController::class,'sendConfirmationMail']);
     Route::get('user-profile', [ApiController::class, 'userProfile']);
     Route::get('logout', [ApiController::class, 'logout']);
