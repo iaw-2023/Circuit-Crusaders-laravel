@@ -15,11 +15,11 @@ return [
     |
     */
 
-    'paths' => ['rest/*', 'sanctum/csrf-cookie'],
+    'paths' => ['*'],
 
     'allowed_methods' => ['*'],
 
-    'allowed_origins' => ['http://localhost:3000','https://motomami-hvtk-agusl1660-agusl1660s-projects.vercel.app'],
+    'allowed_origins' => ['*'],
 
     'allowed_origins_patterns' => [],
 
