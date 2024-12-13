@@ -5,6 +5,10 @@ namespace App\Http\Controllers;
 use App\Models\motoModel;
 use App\Models\estiloModel;
 use Illuminate\Validation\ValidationException;
+use Illuminate\Http\Client\RequestException;
+use Illuminate\Support\Facades\Http; // Esta línea es la correcta
+use Illuminate\Support\Facades\Log;
+use Illuminate\View\View;
 
 use Illuminate\Http\Request;
 
@@ -138,5 +142,42 @@ class motoController extends Controller
         $moto = motoModel::findOrFail($nro_moto);
         $moto->delete();
         return redirect('motos');
+    }
+    
+    /**
+     * Muestra la pantalla de información de la moto.
+     *
+     * @param string $make La marca de la moto.
+     * @param string $model El modelo de la moto.
+     * @return View
+     */
+    public function info($make, $model)
+    {
+        $moto = [
+            'make' => strtoupper($make),
+            'model' => strtoupper($model)
+        ];
+
+        try {
+            // Realizar la solicitud a la API
+            $response = Http::withHeaders([
+                'X-Api-Key' => env('NINJA_API_KEY'), // Asegúrate de agregar esta clave en tu archivo .env
+            ])->get('https://api.api-ninjas.com/v1/motorcycles', $moto);
+
+            if ($response->successful()) {
+                $motoData = $response->json();
+                
+                if (empty($motoData)) {
+                    return view('moto.info', ['error' => 'No se encontró información para esta moto.', 'moto' => $moto]);
+                }
+
+                return view('moto.info', ['moto' => $motoData[0]]);
+            } else {
+                return view('moto.info', ['error' => 'Error al obtener la información de la moto.', 'moto' => $moto]);
+            }
+        } catch (RequestException $e) {
+            Log::error('Error al conectar con la API: ' . $e->getMessage());
+            return view('moto.info', ['error' => 'Hubo un error al conectarse con la API.', 'moto' => $moto]);
+        }
     }
 }

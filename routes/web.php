@@ -49,6 +49,8 @@ Route::middleware('auth')->group(function () {
     Route::put('motos/{nro_moto}', [motoController::class,'update'])->name('motos.update');
     Route::post('motos', [motoController::class,'store'])->name('motos.store');
     Route::delete('motos/{nro_moto}', [motoController::class,'destroy'])->name('motos.destroy');
+    Route::get('/motos/info/{make}/{model}', [motoController::class, 'info'])->name('motos.info');
+    
 });
 
 Route::middleware('auth')->group(function () {
