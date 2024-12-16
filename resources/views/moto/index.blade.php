@@ -39,7 +39,7 @@ href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0-alpha3/css/
                         <a href="{{ route('motos.edit',$moto->nro_moto) }}" class="btn btn-info">Editar</a>
                         @csrf
                         @method('DELETE')
-                        <button class="btn btn-danger">Eliminar</button>
+                        <button type="submit" class="btn btn-danger">Eliminar</button>
                         <a href="{{ route('motos.info', ['make' => $moto->marca, 'model' => $moto->modelo]) }}"class="btn btn-secondary">Info</a>
 
                     </form>
