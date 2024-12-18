@@ -202,6 +202,7 @@ class ApiController extends Controller
         ]);
     }
 
+    /*
     public function mercadoPago(Request $request)
     {
         \MercadoPago\SDK::setAccessToken('TEST-3585045211371857-012514-e5e4b22ec2435dbf44e71c83b3b3cb0f-470204286');
