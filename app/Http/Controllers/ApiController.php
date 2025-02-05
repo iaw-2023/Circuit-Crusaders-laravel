@@ -11,8 +11,8 @@ use App\Models\detalleModel;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
-use MailerSend\MailerSend;
-use MercadoPago\SDK;
+
+
 
 class ApiController extends Controller
 {
@@ -78,17 +78,6 @@ class ApiController extends Controller
         }
 
         DB::commit();
-
-        $messageBody = "Muchas gracias por su compra.";
-    
-        // Enviar el correo electrónico
-        $mailerSend = new MailerSend(env('MAILERSEND_API_KEY'));
-        $mailerSend->send([
-            'from' => ['email' => 'motomami066@gmail.com', 'name' => 'MotoMami'],
-            'to' => [['email' => $user->email, 'name' => $user->nombre]],
-            'subject' => 'Confirmación de Pedido',
-            'text' => $messageBody,
-        ]);
         
         return response()->json("El pedido fue registrado correctamente.", 200);
     }
@@ -202,39 +191,5 @@ class ApiController extends Controller
             "data" => $historialPedidos
         ]);
     }    
-
-
-    
-    public function mercadoPago(Request $request)
-{
-    \MercadoPago\SDK::setAccessToken('TEST-3585045211371857-012514-e5e4b22ec2435dbf44e71c83b3b3cb0f-470204286');
-    
-    $payment = new \MercadoPago\Payment();
-
-    $payment->transaction_amount = $request->input('transaction_amount');
-    $payment->token = $request->input('token');
-    $payment->installments = $request->input('installments');
-    $payment->payment_method_id = $request->input('payment_method_id');
-    $payment->issuer_id = $request->input('issuer_id');
-
-    $payer = new \MercadoPago\Payer();
-    $payer->email = $request->input('payer.email');
-    $payer->identification = array(
-        "type" => $request->input('payer.identification.type'),
-        "number" => $request->input('payer.identification.number')
-    );
-
-    $payment->payer = $payer;
-
-    $payment->save();
-
-    $response = array(
-        'status' => $payment->status,
-        'status_detail' => $payment->status_detail,
-        'id' => $payment->id
-    );
-
-    return response()->json($response);
-    }
 
 }

@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "5be20c602c1798ac7cd828bc7879a585",
+    "content-hash": "279d074a69c4e2c3cb9c11840f10bdd7",
     "packages": [
         {
             "name": "beberlei/assert",
@@ -1237,8 +1237,8 @@
             "type": "library",
             "extra": {
                 "thanks": {
-                    "name": "ocramius/proxy-manager",
-                    "url": "https://github.com/Ocramius/ProxyManager"
+                    "url": "https://github.com/Ocramius/ProxyManager",
+                    "name": "ocramius/proxy-manager"
                 }
             },
             "autoload": {
@@ -2987,48 +2987,6 @@
                 "source": "https://github.com/mercadopago/sdk-php/tree/2.5.3"
             },
             "time": "2022-11-30T12:55:58+00:00"
-        },
-        {
-            "name": "mercadopago/sdk",
-            "version": "v0.5.6",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/mercadopago/DEPRECATED-sdk-php.git",
-                "reference": "67f65735d5d720a7fc2569163f5c7d150adc613d"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/mercadopago/DEPRECATED-sdk-php/zipball/67f65735d5d720a7fc2569163f5c7d150adc613d",
-                "reference": "67f65735d5d720a7fc2569163f5c7d150adc613d",
-                "shasum": ""
-            },
-            "require": {
-                "ext-curl": "*"
-            },
-            "type": "library",
-            "autoload": {
-                "classmap": [
-                    "lib/mercadopago.php"
-                ]
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "authors": [
-                {
-                    "name": "Horacio Casatti",
-                    "email": "horacio.casatti@mercadolibre.com"
-                }
-            ],
-            "description": "MercadoPago SDK module for Payments integration.",
-            "keywords": [
-                "mercadopago",
-                "sdk"
-            ],
-            "support": {
-                "issues": "https://github.com/mercadopago/DEPRECATED-sdk-php/issues",
-                "source": "https://github.com/mercadopago/DEPRECATED-sdk-php/tree/v0.5.6"
-            },
-            "abandoned": true,
-            "time": "2019-04-15T14:29:38+00:00"
         },
         {
             "name": "monolog/monolog",
