@@ -9,6 +9,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\View\View;
+use Illuminate\Support\Facades\Hash;
+
 
 class ProfileController extends Controller
 {
@@ -49,7 +51,7 @@ class ProfileController extends Controller
         $user = new User();
         $user->name = $validatedData['name'];
         $user->email = $validatedData['email'];
-        $user->password = $validatedData['password'];
+        $user->password = Hash::make($validatedData['password']);
         $user->rol = $validatedData['rol'];
 
         $user->save();

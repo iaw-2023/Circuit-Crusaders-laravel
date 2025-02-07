@@ -33,14 +33,16 @@ Route::middleware('auth')->group(function () {
     Route::get('clientes',[clienteController::class,'index'])->name('clientes.index');
 });
 
-Route::middleware('auth')->group(function () {
-    Route::get('users',[ProfileController::class,'index'])->name('users.index');
-    Route::get('users/create',[ProfileController::class,'create'])->name('users.create');
-    Route::get('users/edit/{id}', [ProfileController::class,'edit'])->name('users.edit');
-    Route::put('users/{id}', [ProfileController::class,'update'])->name('users.update');
-    Route::post('users', [ProfileController::class,'store'])->name('users.store');
-    Route::delete('users/{id}', [ProfileController::class,'destroy'])->name('users.destroy');
+
+Route::middleware(['auth', 'admin'])->group(function () {
+    Route::get('users', [ProfileController::class, 'index'])->name('users.index');
+    Route::get('users/create', [ProfileController::class, 'create'])->name('users.create');
+    Route::get('users/edit/{id}', [ProfileController::class, 'edit'])->name('users.edit');
+    Route::put('users/{id}', [ProfileController::class, 'update'])->name('users.update');
+    Route::post('users', [ProfileController::class, 'store'])->name('users.store');
+    Route::delete('users/{id}', [ProfileController::class, 'destroy'])->name('users.destroy');
 });
+
 
 Route::middleware('auth')->group(function () {
     Route::get('motos',[motoController::class,'index'])->name('motos.index');
@@ -49,6 +51,8 @@ Route::middleware('auth')->group(function () {
     Route::put('motos/{nro_moto}', [motoController::class,'update'])->name('motos.update');
     Route::post('motos', [motoController::class,'store'])->name('motos.store');
     Route::delete('motos/{nro_moto}', [motoController::class,'destroy'])->name('motos.destroy');
+    Route::get('/motos/info/{make}/{model}', [motoController::class, 'info'])->name('motos.info');
+    
 });
 
 Route::middleware('auth')->group(function () {

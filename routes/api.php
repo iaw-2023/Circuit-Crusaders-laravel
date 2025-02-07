@@ -2,6 +2,7 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\PaymentController;
 
 use App\Http\Controllers\ApiController;
 /*
@@ -29,15 +30,22 @@ Route::get('/motos/marca/{marca}',[ApiController::class,'motosPorMarca']);
 Route::post('register', [ApiController::class, 'register']);
 Route::post('login', [ApiController::class, 'login']);
 
+
+Route::post('/process_payment', [PaymentController::class, 'process_payment']);
+
+
 Route::group( ['middleware' => ["auth:sanctum"]], function(){
     Route::post('/pedido',[ApiController::class,'pedido']);
-    Route::post('/process_payment',[ApiController::class,'mercadoPago']);
     Route::post('/sendConfirmationMail',[ApiController::class,'sendConfirmationMail']);
     Route::get('user-profile', [ApiController::class, 'userProfile']);
     Route::get('logout', [ApiController::class, 'logout']);
     Route::get('historial', [ApiController::class, 'getOrderHistory']);
+
 });
 
 Route::middleware('auth:sanctum')->get('/cliente', function (Request $request) {
     return $request->cliente();
 });
+
+
+

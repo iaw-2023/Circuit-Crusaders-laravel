@@ -1,4 +1,4 @@
-<p align="center"><img src="https://i.ibb.co/W2Pmn2H/logomotomami.png" alt="logomotomami" border="0"></p>
+<p align="center"><img src="https://i.ibb.co/yV7W6Td/logomotomami.png" alt="logomotomami" border="0"></p>
 
 ## Introducción
 
